@@ -1,20 +1,24 @@
 
 package nutricionista;
 
+import java.util.Date;
+
 public class Alimento {
     
     private String codComida;
     private String nombre;
     private double caloriasPorPorcion; // por 100g
+    private String problemaAlimenticio; //celiaco, etc.
     private String tipo; // desayuno, merienda, etc.
     private String detalle; // descripción breve
 
-    public Alimento(String codComida, String nombre, double caloriasPorPorcion, String tipo, String detalle) {
+    public Alimento(String codComida, String nombre, double caloriasPorPorcion, String tipo, String detalle, String problemaAlimenticio) {
         this.codComida = codComida;
         this.nombre = nombre;
         this.caloriasPorPorcion = caloriasPorPorcion;
         this.tipo = tipo;
         this.detalle = detalle;
+        this.problemaAlimenticio = problemaAlimenticio;
     }
 
     public String getCodComida() {
