@@ -58,5 +58,24 @@ public class Alimento {
     }
     
     
-    
+    /*FUNCIONES*/
+
+    public List<Alimento> filtrarXIngred(int){
+
+    }
+
+    public List<Alimento> filtrarNombre(String){
+
+    }
+
+    public List<Alimento> filtrarxCalorias100(int){
+
+    }
+
+    public void modificarAlimento(Alimento){
+
+    }
+
+
+
 }

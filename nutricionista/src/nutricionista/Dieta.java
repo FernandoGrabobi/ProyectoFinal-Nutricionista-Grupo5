@@ -102,5 +102,14 @@ public class Dieta {
     }
     
     
-    
+    /*FUNCIONES*/
+
+    public void cargarPeso(){
+
+    }
+
+    public void imprimirDieta(){
+
+    }
+
 }

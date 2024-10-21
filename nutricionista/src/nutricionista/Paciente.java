@@ -57,6 +57,23 @@ public class Paciente {
         this.pesoBuscado = pesoBuscado;
     }
     
-    
+
+    /*FUNCIONES*/
+
+    public void cambiarPesoDeseado(){
+
+    }
+
+    public void actualizarPesoAct(){
+
+    }
+
+    public void seAcercaAlPeso(){
+
+    }
+
+    public void listarLosQueLlegaron(){
+
+    }
     
 }

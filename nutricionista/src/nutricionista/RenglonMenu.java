@@ -47,6 +47,19 @@ public class RenglonMenu {
         this.subtotalCalorias = subtotalCalorias;
     }
     
-    
+
+    /*FUNCIONES*/
+
+    public void modificarRenglon(){
+
+    }
+
+    public void imprimirRenglon(){
+
+    }
+
+    public void addAlimento(){
+
+    }
     
 }

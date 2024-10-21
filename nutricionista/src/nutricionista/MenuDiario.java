@@ -57,6 +57,22 @@ public class MenuDiario {
         this.estado = estado;
     }
     
-    
+
+    /*FUNCIONES*/
+
+    public void alterarDietaDiaria(){
+
+    }
+
+    public MenuDiario generarDietaDiaria(){
+    return;
+    }
+
+    public MenuDiario armarDietaDiaria(){return;
+    }
+
+    public void addRenglon(RenglonDeMenu){
+
+    }
     
 }
