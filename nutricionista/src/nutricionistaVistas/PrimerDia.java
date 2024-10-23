@@ -69,6 +69,11 @@ public class PrimerDia extends javax.swing.JInternalFrame {
         jButtonContinuarDIA1.setText("Continuar");
 
         jButtonSalirDIA1.setText("Salir");
+        jButtonSalirDIA1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalirDIA1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -103,7 +108,7 @@ public class PrimerDia extends javax.swing.JInternalFrame {
                         .addComponent(jTextCaloriasDIA2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButtonAgregarComida)
-                        .addGap(0, 14, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(21, 21, 21))
         );
         layout.setVerticalGroup(
@@ -128,7 +133,7 @@ public class PrimerDia extends javax.swing.JInternalFrame {
                             .addComponent(jTextTotalCalorias, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButtonSalirDIA1)
                             .addComponent(jButtonContinuarDIA1))
@@ -137,6 +142,10 @@ public class PrimerDia extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonSalirDIA1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirDIA1ActionPerformed
+        dispose();
+    }//GEN-LAST:event_jButtonSalirDIA1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

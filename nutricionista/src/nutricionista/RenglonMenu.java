@@ -12,7 +12,7 @@ public class RenglonMenu {
         this.nroRenglon = nroRenglon;
         this.alimento = alimento;
         this.cantidad = cantidad;
-        this.subtotalCalorias = (alimento.getCaloriasPorPorcion() / 100) * cantidad;
+        this.subtotalCalorias = calcularSubTotalCalorias();
     }
 
     public int getNroRenglon() {
@@ -29,6 +29,7 @@ public class RenglonMenu {
 
     public void setAlimento(Alimento alimento) {
         this.alimento = alimento;
+        this.subtotalCalorias = calcularSubTotalCalorias(); // deberia cambiar el total de calorias si se cambia la cantidad de alimento
     }
 
     public double getCantidad() {
@@ -37,6 +38,7 @@ public class RenglonMenu {
 
     public void setCantidad(double cantidad) {
         this.cantidad = cantidad;
+        this.subtotalCalorias = calcularSubTotalCalorias();//deberia
     }
 
     public double getSubtotalCalorias() {
@@ -50,16 +52,21 @@ public class RenglonMenu {
 
     /*FUNCIONES*/
 
-    public void modificarRenglon(){
-
+    public void modificarRenglon(double nuevaCantidad, Alimento nuevoAlimento){
+        setCantidad(nuevaCantidad);
+        setAlimento(nuevoAlimento);
     }
 
     public void imprimirRenglon(){
+        System.out.println("Nombre: "+alimento.getNombre()+" - Renglon: "+nroRenglon+" - Cantidad: "+cantidad+" - Calorias: "+subtotalCalorias);
 
     }
 
-    public void addAlimento(){
-
+    public void addAlimento(Alimento nuevoAlimento){
+        setAlimento(nuevoAlimento);
     }
     
+    private double calcularSubTotalCalorias(){
+        return (alimento.getCaloriasPorPorcion() / 100)*cantidad;
+    }
 }

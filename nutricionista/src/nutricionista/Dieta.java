@@ -104,12 +104,29 @@ public class Dieta {
     
     /*FUNCIONES*/
 
-    public void cargarPeso(){
-
+    public void cargarPeso(double nuevoPeso){
+        this.pesoFinal = nuevoPeso;
     }
 
     public void imprimirDieta(){
-
+        System.out.println("Codigo de Dieta: "+codDieta);
+        System.out.println("Nombre de la Dieta: "+nombre);
+        System.out.println("Paciente: "+paciente.getNombreCompleto());
+        System.out.println("Fecha de Inicio: "+fechaInicio);
+        System.out.println("Fecha de Fin: "+fechaFin);
+        System.out.println("Peso Incial: "+pesoInicial);
+        System.out.println("Peso Final: "+pesoFinal);
+        System.out.println("Calorias en Total: "+caloriasTotal);
+        System.out.println("");
+        System.out.println("Menus:");
+        for(MenuDiario menu : menus){
+            System.out.println(" - "+menu.getCodMenu()+" (Dia "+menu.getDia()+"): "+menu.getCaloriasDelMenu()+" kcal");
+            
+        }
+    }
+    
+    public void addMenu(MenuDiario menu){
+        this.menus.add(menu);
     }
 
 }

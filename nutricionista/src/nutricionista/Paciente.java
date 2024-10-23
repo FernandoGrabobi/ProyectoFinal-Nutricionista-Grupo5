@@ -60,20 +60,25 @@ public class Paciente {
 
     /*FUNCIONES*/
 
-    public void cambiarPesoDeseado(){
-
+    public void cambiarPesoDeseado(double nuevoPesoBuscado){
+        this.pesoBuscado = nuevoPesoBuscado;
     }
 
-    public void actualizarPesoAct(){
-
+    public void actualizarPesoAct(double nuevoPesoAct){
+        this.pesoActual = nuevoPesoAct;
     }
 
-    public void seAcercaAlPeso(){
-
+    public boolean seAcercaAlPeso(){
+        double diferencia = Math.abs(this.pesoBuscado - this.pesoActual);
+        return diferencia <= 1.0;
     }
 
     public void listarLosQueLlegaron(){
-
+        System.out.println("Nombre Completo: "+nombreCompleto);
+        System.out.println("Edad: "+edad);
+        System.out.println("Altura: "+altura);
+        System.out.println("Peso Actual: "+pesoActual);
+        System.out.println("Peso Buscado: "+pesoBuscado);
     }
     
 }

@@ -1,6 +1,8 @@
 
 package nutricionista;
 
+import java.util.List;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Alimento {
@@ -64,20 +66,44 @@ public class Alimento {
     
     /*FUNCIONES*/
 
-    public List<Alimento> filtrarXIngred(int){
-
+    public static List<Alimento> filtrarXIngred(List<Alimento> lista, String ingredientes){
+        List<Alimento> filtrados = new ArrayList<>();
+        for(Alimento alimento : lista){
+            if(alimento.getDetalle().toLowerCase().contains(ingredientes.toLowerCase())){
+                filtrados.add(alimento);
+            }
+        }
+        
+        return filtrados;
     }
 
-    public List<Alimento> filtrarNombre(String){
-
+    public List<Alimento> filtrarNombre(List<Alimento> lista, String nombre){
+        List<Alimento> filtrados = new ArrayList<>();
+        for(Alimento alimento : lista){
+            if(alimento.getNombre().toLowerCase().contains(nombre.toLowerCase())){
+                filtrados.add(alimento);
+            }
+        }
+        return filtrados;
     }
 
-    public List<Alimento> filtrarxCalorias100(int){
 
+    public static List<Alimento> filtrarXCalorias(List<Alimento> lista, double maxCalorias) {
+        List<Alimento> filtrados = new ArrayList<>();
+        for (Alimento alimento : lista) {
+            if (alimento.getCaloriasPorPorcion() <= maxCalorias) {
+                filtrados.add(alimento);
+            }
+        }
+        return filtrados;
     }
 
-    public void modificarAlimento(Alimento){
-
+    public void modificarAlimento(String nuevoNombre, double nuevasCalorias, String nuevoTipo, String nuevoDetalle, String nuevoProblema) {
+        this.nombre = nuevoNombre;
+        this.caloriasPorPorcion = nuevasCalorias;
+        this.tipo = nuevoTipo;
+        this.detalle = nuevoDetalle;
+        this.problemaAlimenticio = nuevoProblema;
     }
 
 

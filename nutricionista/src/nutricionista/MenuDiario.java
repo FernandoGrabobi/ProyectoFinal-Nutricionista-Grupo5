@@ -15,6 +15,8 @@ public class MenuDiario {
         this.codMenu = codMenu;
         this.dia = dia;
         this.renglones = new ArrayList<>();
+        this.caloriasDelMenu = 0.0; //inicia en cero
+        this.estado = "Activado"; //inicia el estado
     }
 
     public String getCodMenu() {
@@ -60,19 +62,42 @@ public class MenuDiario {
 
     /*FUNCIONES*/
 
-    public void alterarDietaDiaria(){
-
+    public void alterarDietaDiaria(double caloriasCambio){
+        this.caloriasDelMenu += caloriasCambio;
+        for(RenglonMenu renglon : renglones){
+            int calorasCambio = 0;
+            renglon.setSubtotalCalorias(renglon.getSubtotalCalorias() + (calorasCambio / renglones.size()));
+        }
     }
 
     public MenuDiario generarDietaDiaria(){
-    return;
+        MenuDiario dietaGenerada = new MenuDiario(this.codMenu, this.dia);
+        for(RenglonMenu renglon : renglones){
+            dietaGenerada.addRenglon(renglon);
+        }
+        dietaGenerada.calcularCaloriasDelMenu();
+        return dietaGenerada;
     }
 
-    public MenuDiario armarDietaDiaria(){return;
+    public MenuDiario armarDietaDiaria(ArrayList<RenglonMenu> nuevosRenglones){
+        this.renglones.clear();
+        this.renglones.addAll(nuevosRenglones);
+        calcularCaloriasDelMenu();
+        return null;
     }
 
-    public void addRenglon(RenglonDeMenu){
-
+    public void addRenglon(RenglonMenu renglon){
+        this.renglones.add(renglon);
+        calcularCaloriasDelMenu();
     }
+    
+    private void calcularCaloriasDelMenu(){
+        double totalCalorias = 0;
+        for(RenglonMenu renglon : renglones){
+            totalCalorias += renglon.getSubtotalCalorias();
+        }
+        this.caloriasDelMenu = totalCalorias;
+    }
+
     
 }
