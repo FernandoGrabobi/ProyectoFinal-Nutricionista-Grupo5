@@ -10,19 +10,26 @@ public class Alimento {
     private String codComida;
     private String nombre;
     private double caloriasPorPorcion; // por 100g
-    private String problemaAlimenticio; //celiaco, etc.
     private String tipo; // desayuno, merienda, etc.
     private String detalle; // descripción breve
+    private boolean baja;
+    private boolean aptoVegetariano;
+    private boolean libreDeTACC;
+    private boolean lacteo;
 
-    public Alimento(String codComida, String nombre, double caloriasPorPorcion, String tipo, String detalle, String problemaAlimenticio) {
+    public Alimento(String codComida, String nombre, double caloriasPorPorcion, String tipo, String detalle, boolean baja, boolean aptoVegetariano, boolean libreDeTACC, boolean lacteo) {
         this.codComida = codComida;
         this.nombre = nombre;
         this.caloriasPorPorcion = caloriasPorPorcion;
         this.tipo = tipo;
         this.detalle = detalle;
-        this.problemaAlimenticio = problemaAlimenticio;
+        this.baja = baja;
+        this.aptoVegetariano = aptoVegetariano;
+        this.libreDeTACC = libreDeTACC;
+        this.lacteo = lacteo;
     }
-
+    
+    
     public String getCodComida() {
         return codComida;
     }
@@ -62,6 +69,39 @@ public class Alimento {
     public void setDetalle(String detalle) {
         this.detalle = detalle;
     }
+
+    public boolean isBaja() {
+        return baja;
+    }
+
+    public void setBaja(boolean baja) {
+        this.baja = baja;
+    }
+
+    public boolean isAptoVegetariano() {
+        return aptoVegetariano;
+    }
+
+    public void setAptoVegetariano(boolean aptoVegetariano) {
+        this.aptoVegetariano = aptoVegetariano;
+    }
+
+    public boolean isLibreDeTACC() {
+        return libreDeTACC;
+    }
+
+    public void setLibreDeTACC(boolean libreDeTACC) {
+        this.libreDeTACC = libreDeTACC;
+    }
+
+    public boolean isLacteo() {
+        return lacteo;
+    }
+
+    public void setLacteo(boolean lacteo) {
+        this.lacteo = lacteo;
+    }
+    
     
     
     /*FUNCIONES*/
@@ -97,14 +137,20 @@ public class Alimento {
         }
         return filtrados;
     }
-
-    public void modificarAlimento(String nuevoNombre, double nuevasCalorias, String nuevoTipo, String nuevoDetalle, String nuevoProblema) {
-        this.nombre = nuevoNombre;
-        this.caloriasPorPorcion = nuevasCalorias;
-        this.tipo = nuevoTipo;
-        this.detalle = nuevoDetalle;
-        this.problemaAlimenticio = nuevoProblema;
+    
+    public void filtrarAlimentoVeg(){
+    
     }
+     public void filtrarAlimentoTACC(){
+         
+    }
+    public void filtrarLacteo(){
+        
+    }
+    public void modificarAlimento() {
+
+    }
+    
 
 
 

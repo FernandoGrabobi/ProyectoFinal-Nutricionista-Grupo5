@@ -6,15 +6,21 @@ public class Paciente {
     private String nombreCompleto;
     private int edad;
     private double altura; // en metros
+    private String sexo;
     private double pesoActual; // en kg
     private double pesoBuscado; // en kg
+    private String condicionEspecial;
+   
 
-    public Paciente(String nombreCompleto, int edad, double altura, double pesoActual, double pesoBuscado) {
+    public Paciente(String nombreCompleto, int edad, double altura, String sexo,double pesoActual, double pesoBuscado, String condicionEspecial) {
         this.nombreCompleto = nombreCompleto;
         this.edad = edad;
         this.altura = altura;
+        this.sexo = sexo;
         this.pesoActual = pesoActual;
         this.pesoBuscado = pesoBuscado;
+        this.condicionEspecial = condicionEspecial;
+        
     }
 
     public String getNombreCompleto() {
@@ -56,6 +62,14 @@ public class Paciente {
     public void setPesoBuscado(double pesoBuscado) {
         this.pesoBuscado = pesoBuscado;
     }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
     
 
     /*FUNCIONES*/
@@ -74,11 +88,14 @@ public class Paciente {
     }
 
     public void listarLosQueLlegaron(){
+        /// hay que hacer el arraylist de tipo paciente para mostrar los pacientes que llegaron al peso
         System.out.println("Nombre Completo: "+nombreCompleto);
         System.out.println("Edad: "+edad);
         System.out.println("Altura: "+altura);
+        System.out.println("sexo: "+sexo);
         System.out.println("Peso Actual: "+pesoActual);
         System.out.println("Peso Buscado: "+pesoBuscado);
+        System.out.println("Condicion especial: "+condicionEspecial);
     }
     
 }

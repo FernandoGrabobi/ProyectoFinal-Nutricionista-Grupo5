@@ -5,25 +5,29 @@ import java.util.ArrayList;
 
 public class MenuDiario {
     
-    private String codMenu;
+    private int codMenu;
     private int dia;
     private double caloriasDelMenu;
     private ArrayList<RenglonMenu> renglones;
     private String estado;
+    private Dieta dieta;
 
-    public MenuDiario(String codMenu, int dia) {
+    public MenuDiario(int codMenu, int dia, double caloriasDelMenu, ArrayList<RenglonMenu> renglones, String estado, Dieta dieta) {
         this.codMenu = codMenu;
         this.dia = dia;
-        this.renglones = new ArrayList<>();
-        this.caloriasDelMenu = 0.0; //inicia en cero
-        this.estado = "Activado"; //inicia el estado
+        this.caloriasDelMenu = caloriasDelMenu;
+        this.renglones = renglones;
+        this.estado = estado;
+        this.dieta = dieta;
     }
 
-    public String getCodMenu() {
+
+    
+    public int getCodMenu() {
         return codMenu;
     }
 
-    public void setCodMenu(String codMenu) {
+    public void setCodMenu(int codMenu) {
         this.codMenu = codMenu;
     }
 
@@ -70,14 +74,14 @@ public class MenuDiario {
         }
     }
 
-    public MenuDiario generarDietaDiaria(){
+   /* public MenuDiario generarDietaDiaria(){
         MenuDiario dietaGenerada = new MenuDiario(this.codMenu, this.dia);
         for(RenglonMenu renglon : renglones){
             dietaGenerada.addRenglon(renglon);
         }
         dietaGenerada.calcularCaloriasDelMenu();
         return dietaGenerada;
-    }
+    }*/
 
     public MenuDiario armarDietaDiaria(ArrayList<RenglonMenu> nuevosRenglones){
         this.renglones.clear();
