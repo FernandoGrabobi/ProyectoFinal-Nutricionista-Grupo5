@@ -8,12 +8,12 @@ package nutricionistaVistas;
  *
  * @author Estudiante
  */
-public class TercerDia extends javax.swing.JInternalFrame {
+public class DietaHoraria extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form DietaDiaria
      */
-    public TercerDia() {
+    public DietaHoraria() {
         initComponents();
     }
 
@@ -29,18 +29,18 @@ public class TercerDia extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextComidaDIA3 = new javax.swing.JTextField();
-        jTextCaloriaDIA3 = new javax.swing.JTextField();
+        jTextComidaDIA1 = new javax.swing.JTextField();
+        jTextCaloriasDIA2 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTableDIA3 = new javax.swing.JTable();
-        jButtonAgregarDIA3 = new javax.swing.JButton();
+        jTableDIA1 = new javax.swing.JTable();
+        jButtonAgregarComida = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        jTextTotalCaloriasDIA3 = new javax.swing.JTextField();
-        jButtonContinuarDIA3 = new javax.swing.JButton();
-        jButtonSalirDIA3 = new javax.swing.JButton();
+        jTextTotalCalorias = new javax.swing.JTextField();
+        jButtonContinuarDIA1 = new javax.swing.JButton();
+        jButtonSalirDIA1 = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
-        jLabel1.setText("TERCER DIA");
+        jLabel1.setText("PRIMER DIA");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Historic", 0, 14)); // NOI18N
         jLabel3.setText("Comida:");
@@ -48,7 +48,7 @@ public class TercerDia extends javax.swing.JInternalFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI Historic", 0, 14)); // NOI18N
         jLabel4.setText("Calorias:");
 
-        jTableDIA3.setModel(new javax.swing.table.DefaultTableModel(
+        jTableDIA1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -59,21 +59,30 @@ public class TercerDia extends javax.swing.JInternalFrame {
                 "Comida", "Calorias"
             }
         ));
-        jScrollPane1.setViewportView(jTableDIA3);
+        jScrollPane1.setViewportView(jTableDIA1);
 
-        jButtonAgregarDIA3.setText("Agregar");
+        jButtonAgregarComida.setText("Agregar");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI Historic", 0, 14)); // NOI18N
         jLabel5.setText("Total de calorias:");
 
-        jButtonContinuarDIA3.setText("Continuar");
+        jButtonContinuarDIA1.setText("Continuar");
 
-        jButtonSalirDIA3.setText("Salir");
+        jButtonSalirDIA1.setText("Salir");
+        jButtonSalirDIA1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalirDIA1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(200, 200, 200)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
@@ -83,28 +92,24 @@ public class TercerDia extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextTotalCaloriasDIA3, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTextTotalCalorias, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButtonContinuarDIA3)
+                                .addComponent(jButtonContinuarDIA1)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButtonSalirDIA3))))
+                                .addComponent(jButtonSalirDIA1))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextComidaDIA3, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextComidaDIA1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextCaloriaDIA3, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextCaloriasDIA2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButtonAgregarDIA3)
-                        .addGap(0, 14, Short.MAX_VALUE)))
+                        .addComponent(jButtonAgregarComida)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(21, 21, 21))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(202, 202, 202)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,9 +120,9 @@ public class TercerDia extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel4)
-                    .addComponent(jTextComidaDIA3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextCaloriaDIA3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonAgregarDIA3))
+                    .addComponent(jTextComidaDIA1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextCaloriasDIA2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonAgregarComida))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,32 +130,36 @@ public class TercerDia extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(jTextTotalCaloriasDIA3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextTotalCalorias, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButtonSalirDIA3)
-                            .addComponent(jButtonContinuarDIA3))
+                            .addComponent(jButtonSalirDIA1)
+                            .addComponent(jButtonContinuarDIA1))
                         .addGap(16, 16, 16))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButtonSalirDIA1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirDIA1ActionPerformed
+        dispose();
+    }//GEN-LAST:event_jButtonSalirDIA1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAgregarDIA3;
-    private javax.swing.JButton jButtonContinuarDIA3;
-    private javax.swing.JButton jButtonSalirDIA3;
+    private javax.swing.JButton jButtonAgregarComida;
+    private javax.swing.JButton jButtonContinuarDIA1;
+    private javax.swing.JButton jButtonSalirDIA1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTableDIA3;
-    private javax.swing.JTextField jTextCaloriaDIA3;
-    private javax.swing.JTextField jTextComidaDIA3;
-    private javax.swing.JTextField jTextTotalCaloriasDIA3;
+    private javax.swing.JTable jTableDIA1;
+    private javax.swing.JTextField jTextCaloriasDIA2;
+    private javax.swing.JTextField jTextComidaDIA1;
+    private javax.swing.JTextField jTextTotalCalorias;
     // End of variables declaration//GEN-END:variables
 }
