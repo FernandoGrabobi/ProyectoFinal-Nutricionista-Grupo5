@@ -9,11 +9,11 @@ import javax.swing.JCheckBox;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import nutricionista.Alimento;
-import nutricionista.Dieta;
-import nutricionista.MenuDiario;
-import nutricionista.Paciente;
-import nutricionista.RenglonMenu;
+import entidades.Alimento;
+import entidades.Dieta;
+import entidades.MenuDiario;
+import entidades.Paciente;
+import entidades.RenglonMenu;
 
 /**
  *
@@ -62,7 +62,6 @@ public class DatosPaciente extends javax.swing.JFrame {
         jTextPesoActual = new javax.swing.JTextField();
         jTextPesoBuscado = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jFecha = new com.toedter.calendar.JDateChooser();
         jButtonNuevo = new javax.swing.JButton();
         jButtonEmpezar = new javax.swing.JButton();
         jButtonSalir = new javax.swing.JButton();
@@ -265,7 +264,6 @@ public class DatosPaciente extends javax.swing.JFrame {
         escritorio.setLayer(jTextPesoActual, javax.swing.JLayeredPane.DEFAULT_LAYER);
         escritorio.setLayer(jTextPesoBuscado, javax.swing.JLayeredPane.DEFAULT_LAYER);
         escritorio.setLayer(jLabel8, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        escritorio.setLayer(jFecha, javax.swing.JLayeredPane.DEFAULT_LAYER);
         escritorio.setLayer(jButtonNuevo, javax.swing.JLayeredPane.DEFAULT_LAYER);
         escritorio.setLayer(jButtonEmpezar, javax.swing.JLayeredPane.DEFAULT_LAYER);
         escritorio.setLayer(jButtonSalir, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -314,8 +312,7 @@ public class DatosPaciente extends javax.swing.JFrame {
                             .addComponent(jTextAltura, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
                             .addComponent(jTextEdad)
                             .addComponent(jTextNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
-                            .addComponent(jTextPesoActual, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
-                            .addComponent(jFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jTextPesoActual, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(44, 44, 44))
@@ -358,9 +355,7 @@ public class DatosPaciente extends javax.swing.JFrame {
                                     .addComponent(jTextPesoBuscado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel5))))
                         .addGap(14, 14, 14)
-                        .addGroup(escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8)))
+                        .addComponent(jLabel8))
                     .addGroup(escritorioLayout.createSequentialGroup()
                         .addGap(9, 9, 9)
                         .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -507,7 +502,6 @@ public class DatosPaciente extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckMerienda;
     private javax.swing.JCheckBox jCheckVegano;
     private javax.swing.JCheckBox jCheckVegetariano;
-    private com.toedter.calendar.JDateChooser jFecha;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

@@ -1,4 +1,4 @@
-package nutricionista;
+package entidades;
 
 import java.util.Date;
 

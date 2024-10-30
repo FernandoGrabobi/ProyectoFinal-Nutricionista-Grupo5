@@ -91,7 +91,6 @@
                               <Component id="jTextEdad" alignment="0" max="32767" attributes="0"/>
                               <Component id="jTextNombre" alignment="0" pref="166" max="32767" attributes="0"/>
                               <Component id="jTextPesoActual" pref="166" max="32767" attributes="0"/>
-                              <Component id="jFecha" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace pref="78" max="32767" attributes="0"/>
                           <Component id="jLabel10" min="-2" pref="138" max="-2" attributes="0"/>
@@ -147,10 +146,7 @@
                               </Group>
                           </Group>
                           <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jFecha" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <EmptySpace min="9" pref="9" max="-2" attributes="0"/>
@@ -270,8 +266,6 @@
             <Property name="text" type="java.lang.String" value="Fecha inicio:"/>
           </Properties>
         </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="jFecha">
-        </Component>
         <Component class="javax.swing.JButton" name="jButtonNuevo">
           <Properties>
             <Property name="text" type="java.lang.String" value="Nuevo"/>
@@ -371,7 +365,7 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Intolerante a la Lactosa"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Cursor Por defecto"/>
                 </Property>
               </Properties>
             </Component>
