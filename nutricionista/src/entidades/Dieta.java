@@ -142,7 +142,7 @@ public class Dieta {
     public void imprimirDieta(){
         System.out.println("Codigo de Dieta: "+codDieta);
         System.out.println("Nombre de la Dieta: "+nombre);
-        System.out.println("Paciente: "+paciente.getNombreCompleto());
+        System.out.println("Paciente: "+paciente.getNombre() + paciente.getApellido());
         System.out.println("Fecha de Inicio: "+fechaInicio);
         System.out.println("Fecha de Fin: "+fechaFin);
         System.out.println("Peso Incial: "+pesoInicial);

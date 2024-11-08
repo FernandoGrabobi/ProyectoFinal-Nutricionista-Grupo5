@@ -2,35 +2,69 @@
 package entidades;
 
 public class Paciente {
-    
-    private String nombreCompleto;
+    private int nroPaciente;
+    private String nombre;
+    private String apellido;
     private int edad;
-    private double altura; // en metros
+    private int altura; // en metros y entero
     private String sexo;
-    private double pesoActual; // en kg
-    private double pesoBuscado; // en kg
+    private float pesoActual; // en kg
+    private float pesoBuscado; // en kg
     private String condicionEspecial;
-   
 
-    public Paciente(String nombreCompleto, int edad, double altura, String sexo,double pesoActual, double pesoBuscado, String condicionEspecial) {
-        this.nombreCompleto = nombreCompleto;
+    public Paciente(int nroPaciente, String nombre, String apellido, int edad, int altura, String sexo, float pesoActual, float pesoBuscado, String condicionEspecial) {
+        this.nroPaciente = nroPaciente;
+        this.nombre = nombre;
+        this.apellido = apellido;
         this.edad = edad;
         this.altura = altura;
         this.sexo = sexo;
         this.pesoActual = pesoActual;
         this.pesoBuscado = pesoBuscado;
         this.condicionEspecial = condicionEspecial;
-        
     }
 
-    public String getNombreCompleto() {
-        return nombreCompleto;
+    public Paciente(String nombre, String apellido, int edad, int altura, String sexo, float pesoActual, float pesoBuscado, String condicionEspecial) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.edad = edad;
+        this.altura = altura;
+        this.sexo = sexo;
+        this.pesoActual = pesoActual;
+        this.pesoBuscado = pesoBuscado;
+        this.condicionEspecial = condicionEspecial;
+    }
+    
+    
+    
+    
+
+    public int getNroPaciente() {
+        return nroPaciente;
     }
 
-    public void setNombreCompleto(String nombreCompleto) {
-        this.nombreCompleto = nombreCompleto;
+    public void setNroPaciente(int nroPaciente) {
+        this.nroPaciente = nroPaciente;
     }
 
+ 
+    
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+    
     public int getEdad() {
         return edad;
     }
@@ -39,27 +73,36 @@ public class Paciente {
         this.edad = edad;
     }
 
-    public double getAltura() {
+    public int getAltura() {
         return altura;
     }
 
-    public void setAltura(double altura) {
+    public void setAltura(int altura) {
         this.altura = altura;
     }
 
-    public double getPesoActual() {
+    public String getCondicionEspecial() {
+        return condicionEspecial;
+    }
+
+    public void setCondicionEspecial(String condicionEspecial) {
+        this.condicionEspecial = condicionEspecial;
+    }
+
+    
+    public float getPesoActual() {
         return pesoActual;
     }
 
-    public void setPesoActual(double pesoActual) {
+    public void setPesoActual(float pesoActual) {
         this.pesoActual = pesoActual;
     }
 
-    public double getPesoBuscado() {
+    public float getPesoBuscado() {
         return pesoBuscado;
     }
 
-    public void setPesoBuscado(double pesoBuscado) {
+    public void setPesoBuscado(float pesoBuscado) {
         this.pesoBuscado = pesoBuscado;
     }
 
@@ -74,11 +117,11 @@ public class Paciente {
 
     /*FUNCIONES*/
 
-    public void cambiarPesoDeseado(double nuevoPesoBuscado){
+    public void cambiarPesoDeseado(float nuevoPesoBuscado){
         this.pesoBuscado = nuevoPesoBuscado;
     }
 
-    public void actualizarPesoAct(double nuevoPesoAct){
+    public void actualizarPesoAct(float nuevoPesoAct){
         this.pesoActual = nuevoPesoAct;
     }
 
@@ -89,7 +132,7 @@ public class Paciente {
 
     public void listarLosQueLlegaron(){
         /// hay que hacer el arraylist de tipo paciente para mostrar los pacientes que llegaron al peso
-        System.out.println("Nombre Completo: "+nombreCompleto);
+        System.out.println("Nombre Completo: "+nombre + apellido);
         System.out.println("Edad: "+edad);
         System.out.println("Altura: "+altura);
         System.out.println("sexo: "+sexo);
