@@ -1,45 +1,59 @@
-
 package conexion;
 
 import java.sql.*;
 import javax.swing.JOptionPane;
 import org.mariadb.jdbc.Connection;
 
-
-
 public class Conexion {
 
-    public static void main(String[] args) {
-        
-        try{
-            //1- Crear conexion
-            Connection conexion = (Connection) DriverManager.getConnection("jdbc:mariadb://localhost:3306/nutricionista_2024","root" , "");
-        
-            //2- Crear objeto Statement.
-            Statement miStatement = conexion.createStatement();
-            
-            //3- Ejecutar SQL
-            
-            ResultSet miResultSet = miStatement.executeQuery("SELECT * FROM PACIENTE");
-            
-            //4- Recorred el ResultSet
-                    
-            while (miResultSet.next()){
-            
-                System.out.println(miResultSet.getString("NOMBRE") + " " + miResultSet.getString("EDAD"));
-                
-            }
-            
-            
-        } catch (Exception e){
-        
-            System.out.println("Hubo un error al conectar con la base de datos");
-            
-            e.printStackTrace();
+    private static final String DATABASE_URL = "jdbc:mariadb://";
+    private static final String DATABASE_HOST = "localhost";
+    private static final String DATABASE_PUERTO = ":3306";
+    private static final String DATABASE_DB = "/nutricionista_2024";
+    private static final String DATABASE_USUARIO = "root";
+    private static final String DATABASE_PASSWORD = "";
+    private static Conexion conexion = null;
+    private static Connection con = null;
+
+    private Conexion() {
+        try {
+            // Cargar drivers
+            Class.forName("org.mariadb.jdbc.Driver");
+
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "Clase Conexion: Error al cargar Driver" + ex);
         }
-        
-        
-        
     }
-    
+
+    public static Connection getConexion() {
+        if (con == null) {
+            conexion = new Conexion();
+
+            try {
+                con = (Connection) DriverManager.getConnection(
+                        DATABASE_URL
+                        + DATABASE_HOST
+                        + DATABASE_PUERTO
+                        + DATABASE_DB
+                        + "?useLegacyDatetimeCode=false&serverTimezone=UTC"
+                        + "&user="
+                        + DATABASE_USUARIO
+                        + "&password="
+                        + DATABASE_PASSWORD
+                );
+
+                Statement miStatement = con.createStatement();
+                ResultSet miResultSet = miStatement.executeQuery("SELECT * FROM PACIENTE");
+
+                System.out.println("Conectado");
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
+        return con;
+    }
+
+    public static void main(String[] args) {
+        Connection conexion = Conexion.getConexion();
+    }
 }
