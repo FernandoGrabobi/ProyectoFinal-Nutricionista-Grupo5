@@ -529,7 +529,6 @@ public class DatosPaciente extends javax.swing.JFrame {
         jTextAltura.setText("");
         jTextPesoActual.setText("");
         jTextPesoBuscado.setText("");
-        jTextDescripcion.setText("");
         jCheckCeliaco.setSelected(false);
         jCheckLactosa.setSelected(false);
         jCheckVegetariano.setSelected(false);
