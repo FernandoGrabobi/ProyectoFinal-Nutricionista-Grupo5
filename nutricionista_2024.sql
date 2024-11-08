@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-10-2024 a las 01:43:06
+-- Tiempo de generación: 08-11-2024 a las 13:07:27
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -72,14 +72,14 @@ CREATE TABLE `dieta` (
   `estado` int(11) NOT NULL,
   `totalCalorias` float NOT NULL,
   `nroPaciente` int(11) NOT NULL,
-  `tipoDieta` varchar(30) NOT NULL
+  `tipoDeDieta` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `dieta`
 --
 
-INSERT INTO `dieta` (`codDieta`, `nombreD`, `fechaIni`, `fechaFin`, `pesoIni`, `pesoFinal`, `estado`, `totalCalorias`, `nroPaciente`, `tipoDieta`) VALUES
+INSERT INTO `dieta` (`codDieta`, `nombreD`, `fechaIni`, `fechaFin`, `pesoIni`, `pesoFinal`, `estado`, `totalCalorias`, `nroPaciente`, `tipoDeDieta`) VALUES
 (1, 'Dieta mediterránea', '2024-12-02', '2024-12-08', 85, 80, 1, 8600, 1, ''),
 (2, 'Dieta Saludable', '2024-05-02', '2024-05-07', 68, 55, 1, 9000, 4, ''),
 (3, 'Dieta Equilibrada', '2024-10-03', '2024-12-09', 70, 62, 1, 9200, 2, ''),
@@ -128,25 +128,27 @@ INSERT INTO `menudiario` (`codMenu`, `dia`, `estado`, `caloriasDelMenu`, `codDie
 CREATE TABLE `paciente` (
   `nroPaciente` int(11) NOT NULL,
   `nombre` varchar(100) NOT NULL,
+  `apellido` varchar(50) NOT NULL,
   `edad` int(11) NOT NULL,
-  `genero` varchar(20) NOT NULL,
-  `altura` float NOT NULL,
+  `altura` int(11) NOT NULL,
   `pesoActual` float NOT NULL,
   `pesoBuscado` float NOT NULL,
-  `condicionEspecial` varchar(50) NOT NULL
+  `sexo` varchar(50) NOT NULL,
+  `condicionEspecial` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `paciente`
 --
 
-INSERT INTO `paciente` (`nroPaciente`, `nombre`, `edad`, `genero`, `altura`, `pesoActual`, `pesoBuscado`, `condicionEspecial`) VALUES
-(1, 'Maria Perez', 30, '', 1.75, 85, 80, ''),
-(2, 'Juan Lopez', 23, '', 1.7, 70, 62, ''),
-(3, 'Luis Garcia', 42, '', 1.78, 97, 85, ''),
-(4, 'Sofia Torres', 28, '', 1.65, 68, 55, ''),
-(5, 'Brisa Méndez', 24, '', 1.6, 75, 65, ''),
-(6, 'Martin Paez', 34, '', 1.79, 88, 80, '');
+INSERT INTO `paciente` (`nroPaciente`, `nombre`, `apellido`, `edad`, `altura`, `pesoActual`, `pesoBuscado`, `sexo`, `condicionEspecial`) VALUES
+(1, 'Maria ', 'Perez', 30, 200, 85, 80, '', ''),
+(2, 'Juan', 'Lopez', 23, 178, 70, 62, '', ''),
+(3, 'Luis', 'Garcia', 42, 167, 97, 85, '', ''),
+(4, 'Sofia', 'Torres', 28, 182, 68, 55, '', ''),
+(5, 'Brisa', 'Mendez', 24, 176, 75, 65, '', ''),
+(6, 'Martin', 'Paez', 34, 180, 88, 80, '', ''),
+(7, 'luciano', 'rodriguez', 222222222, 200, 100, 80, 'Hombre', '');
 
 -- --------------------------------------------------------
 
@@ -258,7 +260,7 @@ ALTER TABLE `menudiario`
 -- AUTO_INCREMENT de la tabla `paciente`
 --
 ALTER TABLE `paciente`
-  MODIFY `nroPaciente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `nroPaciente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `renglondemenu`
