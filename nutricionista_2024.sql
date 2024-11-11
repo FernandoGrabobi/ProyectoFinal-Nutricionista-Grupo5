@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-11-2024 a las 13:07:27
+-- Tiempo de generación: 11-11-2024 a las 13:56:20
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -54,7 +54,49 @@ INSERT INTO `alimento` (`codComida`, `nombre`, `tipoComida`, `caloriasPor100g`, 
 (8, 'bife de carne', 'cena', 250, 'Carne vacuna, sal, aceite', 0, 0, 1, 0),
 (9, 'Cereal con leche', 'desayuno', 150, 'Cereal de maíz, leche', 0, 1, 0, 0),
 (10, 'Torta de zanahoria', 'merienda', 300, 'Harina, zanahoria, azúcar, huevo', 0, 1, 0, 0),
-(11, 'Pan integral', 'desayuno', 250, 'Harina integral, agua, levadura, sal', 0, 1, 0, 0);
+(11, 'Pan integral', 'desayuno', 250, 'Harina integral, agua, levadura, sal', 0, 1, 0, 0),
+(12, 'Arepas de maíz con queso y aguacate', 'almuerzo', 250, 'Harina de maíz, queso, aguacate, sal, agua.', 0, 0, 1, 0),
+(13, 'Ensalada de quinoa con vegetales', 'cena', 180, 'Quinoa, pimiento, pepino, tomate, cebolla, aceite de oliva, sal, limón', 0, 0, 1, 0),
+(14, 'Tacos de lechuga con pollo', 'almuerzo', 150, 'Hojas de lechuga, pechuga de pollo, cebolla, pimiento, especias', 0, 0, 1, 0),
+(15, 'Tortilla de patatas', 'cena', 200, ' Papas, huevo, cebolla, sal, aceite de oliva', 0, 1, 1, 0),
+(16, 'Paella de mariscos o de verduras', 'almuerzo', 300, 'Arroz, mariscos variados o vegetales (pimiento, guisantes), azafrán, ajo, caldo de pescado o verduras', 0, 0, 1, 0),
+(17, 'Ensalada César con aderezo sin gluten', 'cena', 220, 'Lechuga, pechuga de pollo, queso parmesano, croutons sin gluten, aderezo César sin gluten', 0, 0, 1, 1),
+(18, 'Arroz a la cubana', 'cena', 350, 'Arroz blanco, huevo, plátano maduro, salsa de tomate', 0, 1, 1, 0),
+(19, 'Lasaña de berenjena con carne y queso ', 'almuerzo', 270, ' Berenjena, carne molida, queso, salsa de tomate, especias', 0, 0, 1, 1),
+(20, 'Sopa de lentejas', 'cena', 180, ' Lentejas, zanahoria, cebolla, apio, especias, caldo de verduras', 0, 1, 1, 0),
+(21, 'Ceviche de pescado', 'almuerzo', 120, 'Pescado blanco, cebolla morada, jugo de limón, cilantro, sal, chile (opcional)', 0, 0, 1, 0),
+(22, 'Rollos de sushi', 'cena', 180, 'Arroz para sushi, alga nori, pepino, zanahoria, aguacate, pescado o camarón (sin salsa de soja con gluten)', 0, 0, 1, 0),
+(23, 'Guiso de lentejas con calabaza y vegetales', 'almuerzo', 250, ' Lentejas, calabaza, zanahoria, cebolla, pimiento, caldo de verduras', 0, 1, 1, 0),
+(24, 'Espaguetis de calabacín con pesto', 'cena', 150, 'Calabacín, albahaca, ajo, aceite de oliva, piñones, queso parmesano', 0, 1, 1, 1),
+(25, 'Pizza con masa de coliflor', 'almuerzo', 200, ' Coliflor, queso mozzarella, salsa de tomate, orégano, tus ingredientes favoritos', 0, 1, 1, 1),
+(26, 'Nuggets de pollo con harina de maíz', 'cena', 190, 'Pechuga de pollo, harina de maíz, huevo, sal, pimienta, especias', 0, 0, 1, 0),
+(27, 'Ensalada caprese', 'almuerzo', 150, 'Tomate, mozzarella, albahaca fresca, aceite de oliva, sal.', 0, 1, 1, 0),
+(28, 'Tortillas de maíz rellenas de vegetales y carne', 'almuerzo', 240, 'Tortillas de maíz, carne molida o pollo, lechuga, tomate, queso', 0, 0, 1, 1),
+(29, 'Papas rellenas de atún y vegetales', 'cena', 200, 'Papas, atún en lata, pimiento, cebolla, mayonesa sin gluten', 0, 0, 1, 1),
+(30, 'Hamburguesa con pan sin gluten', 'almuerzo', 300, 'Pan sin gluten, carne molida, lechuga, tomate, queso, condimentos', 0, 0, 1, 1),
+(31, 'Sándwich de pepino, aguacate y queso crema en pan sin gluten', 'cena', 180, 'Pan sin gluten, pepino, aguacate, queso crema', 0, 0, 1, 1),
+(32, 'Ensalada de garbanzos con atún', 'almuerzo', 175, 'Garbanzos, atún en lata, tomate, cebolla, perejil, aceite de oliva', 0, 0, 1, 0),
+(33, 'Pollo al horno con limón y hierbas', 'almuerzo', 235, 'Pechuga de pollo, limón, ajo, romero, aceite de oliva, sal.', 0, 0, 1, 0),
+(34, 'Falafel al horno', 'almuerzo', 210, 'Garbanzos, cebolla, ajo, perejil, comino, pan rallado sin gluten, aceite de oliva.', 0, 1, 1, 0),
+(35, 'Ensalada de couscous con vegetales ', 'almuerzo', 180, ' Couscous sin gluten, pepino, pimiento, tomate, cebolla, perejil, menta, aceite de oliva, limón.', 0, 1, 1, 0),
+(36, 'Curry de garbanzos y espinacas', 'cena', 250, 'Garbanzos, espinacas, cebolla, tomate, leche de coco, curry, ajo', 0, 1, 1, 0),
+(37, 'Tarta de espinaca y ricota', 'almuerzo', 300, 'Masa sin gluten, espinaca, ricota, huevo, queso parmesano, sal, pimienta', 0, 1, 1, 1),
+(38, 'Pimientos rellenos de arroz y vegetales', 'cena', 115, 'Pimientos, arroz, zanahoria, cebolla, tomate, especias', 0, 1, 1, 0),
+(39, 'Moussaka de berenjenas', 'cena', 270, 'Berenjena, papa, tomate, queso, cebolla, ajo, especias', 0, 1, 1, 1),
+(40, 'Wrap de vegetales y hummus', 'almuerzo', 180, 'Tortilla de maíz, hummus, zanahoria, pimiento, pepino, lechuga', 0, 1, 1, 0),
+(41, 'Calabacines rellenos de quinoa y queso feta', 'cena', 205, 'Calabacín, quinoa, queso feta, tomate, ajo, hierbas', 0, 1, 1, 1),
+(42, 'Sopa minestrone', 'almuerzo', 145, 'Zanahoria, apio, cebolla, tomate, calabacín, pasta sin gluten, caldo de vegetales', 0, 1, 1, 0),
+(43, 'Risotto de calabaza', 'cena', 280, 'Arroz arborio, calabaza, cebolla, ajo, queso parmesano, caldo de vegetales', 0, 1, 1, 1),
+(44, 'Frittata de espárragos y champiñones', 'almuerzo', 220, 'Huevo, espárragos, champiñones, cebolla, queso', 0, 1, 1, 1),
+(45, 'Hamburguesas de lentejas', 'cena', 185, ' Lentejas, avena sin gluten, cebolla, ajo, especias, pan rallado sin gluten', 0, 1, 1, 0),
+(46, 'Quesadillas de queso y espinaca', 'cena', 240, 'Tortilla de maíz, queso, espinaca, cebolla', 0, 1, 1, 1),
+(47, 'Crema de calabaza y zanahoria', 'almuerzo', 115, 'Calabaza, zanahoria, cebolla, caldo de vegetales', 0, 1, 1, 0),
+(48, 'Pasta al pesto con tomate cherry', 'almuerzo', 305, 'Pasta sin gluten, albahaca, ajo, piñones, aceite de oliva, tomate cherry, queso parmesano', 0, 1, 1, 1),
+(49, 'Bruschettas de tomate y albahaca', 'cena', 150, 'Pan sin gluten, tomate, albahaca, ajo, aceite de oliva', 0, 1, 1, 0),
+(50, 'Ensalada de tabule con coliflor', 'almuerzo', 140, 'Coliflor rallada, tomate, pepino, perejil, menta, limón, aceite de oliva', 0, 1, 1, 0),
+(51, 'Berenjenas a la parmesana ', 'cena', 290, 'Berenjena, salsa de tomate, queso mozzarella, queso parmesano, albahaca', 0, 1, 1, 1),
+(52, 'Huevo pochado con espinacas y aguacate', 'cena', 230, 'Huevo, espinacas, aguacate, sal, pimienta', 0, 1, 1, 0),
+(53, 'Tortilla de vegetales al horno', 'almuerzo', 160, 'Huevo, calabacín, zanahoria, cebolla, espinaca, sal, pimienta', 0, 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -242,7 +284,7 @@ ALTER TABLE `renglondemenu`
 -- AUTO_INCREMENT de la tabla `alimento`
 --
 ALTER TABLE `alimento`
-  MODIFY `codComida` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `codComida` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT de la tabla `dieta`
