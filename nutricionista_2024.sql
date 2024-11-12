@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-11-2024 a las 13:56:20
+-- Tiempo de generación: 12-11-2024 a las 11:37:44
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -190,7 +190,20 @@ INSERT INTO `paciente` (`nroPaciente`, `nombre`, `apellido`, `edad`, `altura`, `
 (4, 'Sofia', 'Torres', 28, 182, 68, 55, '', ''),
 (5, 'Brisa', 'Mendez', 24, 176, 75, 65, '', ''),
 (6, 'Martin', 'Paez', 34, 180, 88, 80, '', ''),
-(7, 'luciano', 'rodriguez', 222222222, 200, 100, 80, 'Hombre', '');
+(17, 'Luciano', 'Rodriguez', 22, 22, 22, 21, 'Hombre', ' / Intolerante a la lactosa');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `profesional`
+--
+
+CREATE TABLE `profesional` (
+  `nombre` varchar(50) NOT NULL,
+  `apellido` varchar(50) NOT NULL,
+  `correo` varchar(50) NOT NULL,
+  `telefono` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -302,7 +315,7 @@ ALTER TABLE `menudiario`
 -- AUTO_INCREMENT de la tabla `paciente`
 --
 ALTER TABLE `paciente`
-  MODIFY `nroPaciente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `nroPaciente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `renglondemenu`
