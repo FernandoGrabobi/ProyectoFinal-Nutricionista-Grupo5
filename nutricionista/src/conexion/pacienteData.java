@@ -20,7 +20,6 @@ public class PacienteData {
     public PacienteData(){
         con = Conexion.getConexion();
     }
-    
     //agregar un paciente
     public void agregarPaciente(Paciente paciente){
         String sql = "INSERT INTO `paciente`(nombre, apellido, edad, altura, pesoActual, pesoBuscado, sexo, condicionEspecial) VALUES"
@@ -47,12 +46,8 @@ public class PacienteData {
             
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, " Error al acceder a la tabla paciente "+ex.getMessage());
-        }
-                      
-        
-       
+        }                   
     }
-    
     
     /*Llenar ComboBox con pacientes*/
   
@@ -62,7 +57,6 @@ public class PacienteData {
         Statement st;
         
         try{
-        
             st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
             
@@ -71,16 +65,12 @@ public class PacienteData {
             combo.addItem(rs.getString(valor));
             
             }
-            
         } catch(SQLException e){
             
             JOptionPane.showMessageDialog(null, "error" + e.toString());
             
         }
-        
-    
     }
-  
     
 
 }
