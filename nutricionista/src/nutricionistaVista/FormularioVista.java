@@ -18,12 +18,15 @@ public class FormularioVista extends javax.swing.JPanel {
     private PacienteData pacData = new PacienteData();
     private Paciente pacienteActual = null;
     
+   
     
     public FormularioVista() {
+        
         initComponents();
     }
 
-    public void Limpiar(){
+    
+   public void Limpiar(){
         inputNombre.setText("");
         inputApellido.setText("");
         inputEdad.setText("");
@@ -37,18 +40,14 @@ public class FormularioVista extends javax.swing.JPanel {
         inputIntolerante2.setSelected(false);
         inputVegano2.setSelected(false);
      }
-  
     
  
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
-        buttonGroup2 = new javax.swing.ButtonGroup();
-        buttonGroup3 = new javax.swing.ButtonGroup();
-        buttonGroup4 = new javax.swing.ButtonGroup();
-        buttonGroup5 = new javax.swing.ButtonGroup();
+        botones = new javax.swing.ButtonGroup();
+        botonesCondicion = new javax.swing.ButtonGroup();
         jInternalFrame1 = new javax.swing.JInternalFrame();
         label1 = new java.awt.Label();
         jPanel1 = new javax.swing.JPanel();
@@ -225,38 +224,39 @@ public class FormularioVista extends javax.swing.JPanel {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel6)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel2)
-                                .addComponent(jLabel4))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel8)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addGap(23, 23, 23)))
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel1)
+                                .addGap(23, 23, 23)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(inputApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
                                     .addComponent(inputNombre)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(inputPesoBuscado, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jLabel9))
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addComponent(inputPesoActual, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
+                                                    .addComponent(inputPesoActual)
                                                     .addComponent(inputAltura))
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(jLabel5)
                                                     .addComponent(jLabel7)))
                                             .addComponent(inputEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(0, 0, Short.MAX_VALUE)))))
+                                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel6)
+                                        .addComponent(jLabel3)
+                                        .addComponent(jLabel2)
+                                        .addComponent(jLabel4))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel8)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(inputPesoBuscado, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jLabel9)))
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 100, Short.MAX_VALUE)
                         .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
@@ -269,6 +269,9 @@ public class FormularioVista extends javax.swing.JPanel {
                     .addComponent(inputNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
@@ -286,17 +289,16 @@ public class FormularioVista extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
                             .addComponent(inputPesoActual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7)))
-                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                            .addComponent(jLabel7))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(inputPesoBuscado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(inputPesoBuscado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9))
-                .addGap(30, 30, 30)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(inputHombre))
+                    .addComponent(inputHombre)
+                    .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(inputMujer)
                 .addGap(25, 25, 25)
@@ -349,7 +351,11 @@ public class FormularioVista extends javax.swing.JPanel {
       
     }//GEN-LAST:event_btnSalirActionPerformed
 
+    
+    
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        
+        
         try{
             String nombre = inputNombre.getText();
             String apellido = inputApellido.getText();
@@ -357,9 +363,49 @@ public class FormularioVista extends javax.swing.JPanel {
             Integer altura =  Integer.parseInt(inputAltura.getText()) ;
             float pesoActual =  Float.parseFloat(inputPesoActual.getText());
             float pesoBuscado =  Float.parseFloat(inputPesoBuscado.getText());
-            /*AGREGAR FUNCION DE BOTONES Y MANEJO*/
-            String sexo = "Hombre";
+            
+            
+            //Funcion para la seleccion de botones en genero
+            
+            botones.add(inputHombre);
+            botones.add(inputMujer);
+            
+            String sexo = "";
+            if(inputHombre.isSelected()){
+                sexo = "Hombre";
+            } else if (inputMujer.isSelected()){
+            sexo = "Mujer";
+            } else if (inputHombre.isSelected() && inputMujer.isSelected()){
+            JOptionPane.showMessageDialog(this, "Por favor, seleccione solo un sexo");
+            inputHombre.setSelected(false);
+            inputMujer.setSelected(false);
+            } else {
+            JOptionPane.showMessageDialog(this, "El campo genero no puede quedar vacio");
+            }
+            
+ 
+            //Funcion para la seleccion de condicionEspecial y concatenacion de la misma en caso de ser varias
+            botonesCondicion.add(inputCeliaco2);
+            botonesCondicion.add(inputVegano2);
+            botonesCondicion.add(inputIntolerante2);
+            botonesCondicion.add(inputVegetariano2);
+            
             String condicionEspecial = "";
+            
+            if(inputCeliaco2.isSelected()){
+                condicionEspecial = "Celiaco";
+            }
+            if(inputVegano2.isSelected()){
+                condicionEspecial += " / Vegano";  
+            }
+            if(inputIntolerante2.isSelected()){
+                condicionEspecial += " / Intolerante a la lactosa";  
+            }
+            if(inputVegetariano2.isSelected()){
+                condicionEspecial += " / Vegetariano";  
+}
+            
+            
 
             /*SE CREA EL PACIENTE EN EL OBJETO DE LA VISTA Y SE ASIGNA*/
 
@@ -402,14 +448,11 @@ public class FormularioVista extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup botones;
+    private javax.swing.ButtonGroup botonesCondicion;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnSalir;
-    private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.ButtonGroup buttonGroup3;
-    private javax.swing.ButtonGroup buttonGroup4;
-    private javax.swing.ButtonGroup buttonGroup5;
     private javax.swing.JTextField inputAltura;
     private javax.swing.JTextField inputApellido;
     private javax.swing.JRadioButton inputCeliaco2;

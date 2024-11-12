@@ -4,6 +4,8 @@
  */
 package nutricionistaVista;
 
+import entidades.Profesional;
+
 /**
  *
  * @author ferna
@@ -16,7 +18,9 @@ public class PrincipalVista extends javax.swing.JFrame {
     public PrincipalVista() {
         initComponents();
         setLocationRelativeTo(null);
+       
     }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
