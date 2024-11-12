@@ -226,22 +226,25 @@ public class FormularioVista extends javax.swing.JPanel {
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel1)
                                         .addGap(23, 23, 23)))
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(inputApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+                                    .addComponent(inputNombre)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(inputPesoBuscado, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel9))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(inputEdad, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(inputAltura, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(inputPesoActual, javax.swing.GroupLayout.Alignment.LEADING))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel7)
-                                            .addComponent(jLabel5)))
-                                    .addComponent(inputNombre))))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(inputPesoBuscado, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jLabel9))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addComponent(inputPesoActual, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
+                                                    .addComponent(inputAltura))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel5)
+                                                    .addComponent(jLabel7)))
+                                            .addComponent(inputEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(0, 0, Short.MAX_VALUE)))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 100, Short.MAX_VALUE)
                         .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
@@ -397,23 +400,15 @@ public class FormularioVista extends javax.swing.JPanel {
     private javax.swing.ButtonGroup buttonGroup5;
     private javax.swing.JTextField inputAltura;
     private javax.swing.JTextField inputApellido;
-    private javax.swing.JRadioButton inputCeliaco;
-    private javax.swing.JRadioButton inputCeliaco1;
     private javax.swing.JRadioButton inputCeliaco2;
     private javax.swing.JTextField inputEdad;
     private javax.swing.JRadioButton inputHombre;
-    private javax.swing.JRadioButton inputIntolerante;
-    private javax.swing.JRadioButton inputIntolerante1;
     private javax.swing.JRadioButton inputIntolerante2;
     private javax.swing.JRadioButton inputMujer;
     private javax.swing.JTextField inputNombre;
     private javax.swing.JTextField inputPesoActual;
     private javax.swing.JTextField inputPesoBuscado;
-    private javax.swing.JRadioButton inputVegano;
-    private javax.swing.JRadioButton inputVegano1;
     private javax.swing.JRadioButton inputVegano2;
-    private javax.swing.JRadioButton inputVegetariano;
-    private javax.swing.JRadioButton inputVegetariano1;
     private javax.swing.JRadioButton inputVegetariano2;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
@@ -429,8 +424,6 @@ public class FormularioVista extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private java.awt.Label label1;
     // End of variables declaration//GEN-END:variables

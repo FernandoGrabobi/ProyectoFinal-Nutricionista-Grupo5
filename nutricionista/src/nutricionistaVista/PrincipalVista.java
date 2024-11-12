@@ -32,6 +32,7 @@ public class PrincipalVista extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jRBMFormulario = new javax.swing.JRadioButtonMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        jRBMFormulario1 = new javax.swing.JRadioButtonMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
 
@@ -67,6 +68,21 @@ public class PrincipalVista extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Dieta");
+        jMenu2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu2ActionPerformed(evt);
+            }
+        });
+
+        jRBMFormulario1.setSelected(true);
+        jRBMFormulario1.setText("Dieta");
+        jRBMFormulario1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRBMFormulario1ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jRBMFormulario1);
+
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Dieta Automatica");
@@ -105,6 +121,20 @@ public class PrincipalVista extends javax.swing.JFrame {
      form.setSize(800, 750);
         escritorio.moveToFront(form);
     }//GEN-LAST:event_jRBMFormularioActionPerformed
+
+    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
+        
+    }//GEN-LAST:event_jMenu2ActionPerformed
+
+    private void jRBMFormulario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBMFormulario1ActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        DietaVista diet = new DietaVista();
+        escritorio.add(diet);
+        diet.setVisible(true);
+        diet.setSize(700,700);
+        escritorio.moveToFront(diet);
+    }//GEN-LAST:event_jRBMFormulario1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -149,5 +179,6 @@ public class PrincipalVista extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JRadioButtonMenuItem jRBMFormulario;
+    private javax.swing.JRadioButtonMenuItem jRBMFormulario1;
     // End of variables declaration//GEN-END:variables
 }

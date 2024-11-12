@@ -7,6 +7,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
+
 
 public class PacienteData {
     
@@ -47,7 +52,35 @@ public class PacienteData {
         
        
     }
-
-
+    
+    
+    /*Llenar ComboBox con pacientes*/
+  
+    public void rellenarComboBox(String tabla, String valor, JComboBox combo){
+    
+        String sql = "SELECT * FROM " + tabla;
+        Statement st;
+        
+        try{
+        
+            st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            
+            while(rs.next())
+            {
+            combo.addItem(rs.getString(valor));
+            
+            }
+            
+        } catch(SQLException e){
+            
+            JOptionPane.showMessageDialog(null, "error" + e.toString());
+            
+        }
+        
+    
+    }
+  
+    
 
 }
