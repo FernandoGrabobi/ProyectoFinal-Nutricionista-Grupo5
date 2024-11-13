@@ -449,9 +449,9 @@
                                       <Group type="103" groupAlignment="1" attributes="0">
                                           <Group type="102" alignment="1" attributes="0">
                                               <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                                              <Component id="jSpinner4" min="-2" pref="77" max="-2" attributes="0"/>
+                                              <Component id="jSpinnerDesayuno" min="-2" pref="77" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jTextField4" min="-2" pref="74" max="-2" attributes="0"/>
+                                              <Component id="JTDesayuno" min="-2" pref="74" max="-2" attributes="0"/>
                                               <EmptySpace max="32767" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="1" attributes="0">
@@ -518,8 +518,8 @@
                                   <Component id="jPanel7" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jSpinner4" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextField4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jSpinnerDesayuno" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="JTDesayuno" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -599,9 +599,9 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="CBAlmuerzo" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
-                              <Component id="jSpinner1" min="-2" pref="70" max="-2" attributes="0"/>
+                              <Component id="jSpinnerAlmuerzo" min="-2" pref="70" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField1" min="-2" pref="74" max="-2" attributes="0"/>
+                              <Component id="JTAlmuerzo" min="-2" pref="74" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="62" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -616,8 +616,8 @@
                       <Component id="CBAlmuerzo" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jSpinner1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jSpinnerAlmuerzo" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="JTAlmuerzo" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="56" max="32767" attributes="0"/>
                   </Group>
@@ -638,9 +638,9 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JSpinner" name="jSpinner1">
+            <Component class="javax.swing.JSpinner" name="jSpinnerAlmuerzo">
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField1">
+            <Component class="javax.swing.JTextField" name="JTAlmuerzo">
               <Properties>
                 <Property name="text" type="java.lang.String" value="kcal"/>
               </Properties>
@@ -711,9 +711,9 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="CBMerienda" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
-                              <Component id="jSpinner10" min="-2" pref="76" max="-2" attributes="0"/>
+                              <Component id="jSpinnerMerienda" min="-2" pref="76" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField10" min="-2" pref="74" max="-2" attributes="0"/>
+                              <Component id="JTMerienda" min="-2" pref="74" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="56" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -728,8 +728,8 @@
                       <Component id="CBMerienda" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jSpinner10" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField10" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jSpinnerMerienda" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="JTMerienda" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="62" max="32767" attributes="0"/>
                   </Group>
@@ -750,9 +750,9 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JSpinner" name="jSpinner10">
+            <Component class="javax.swing.JSpinner" name="jSpinnerMerienda">
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField10">
+            <Component class="javax.swing.JTextField" name="JTMerienda">
               <Properties>
                 <Property name="text" type="java.lang.String" value="kcal"/>
               </Properties>
@@ -769,9 +769,9 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="CBCena" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jSpinner21" min="-2" pref="73" max="-2" attributes="0"/>
+                              <Component id="jSpinnerCena" min="-2" pref="73" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField22" min="-2" pref="74" max="-2" attributes="0"/>
+                              <Component id="JTCena" min="-2" pref="74" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="59" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -785,8 +785,8 @@
                       <Component id="CBCena" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jSpinner21" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField22" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jSpinnerCena" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="JTCena" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="68" max="32767" attributes="0"/>
                   </Group>
@@ -807,9 +807,9 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JSpinner" name="jSpinner21">
+            <Component class="javax.swing.JSpinner" name="jSpinnerCena">
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField22">
+            <Component class="javax.swing.JTextField" name="JTCena">
               <Properties>
                 <Property name="text" type="java.lang.String" value="kcal"/>
               </Properties>
@@ -830,9 +830,9 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="jSpinner7" min="-2" pref="78" max="-2" attributes="0"/>
+                      <Component id="jSpinnerColaciones" min="-2" pref="78" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jTextField7" min="-2" pref="74" max="-2" attributes="0"/>
+                      <Component id="JTColaciones" min="-2" pref="74" max="-2" attributes="0"/>
                       <EmptySpace pref="78" max="32767" attributes="0"/>
                   </Group>
                   <Component id="CBColaciones" alignment="0" max="32767" attributes="0"/>
@@ -844,8 +844,8 @@
                       <Component id="CBColaciones" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jSpinner7" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField7" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jSpinnerColaciones" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="JTColaciones" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="6" max="32767" attributes="0"/>
                   </Group>
@@ -866,9 +866,9 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JSpinner" name="jSpinner7">
+            <Component class="javax.swing.JSpinner" name="jSpinnerColaciones">
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField7">
+            <Component class="javax.swing.JTextField" name="JTColaciones">
               <Properties>
                 <Property name="text" type="java.lang.String" value="kcal"/>
               </Properties>
@@ -950,9 +950,9 @@
             <Property name="text" type="java.lang.String" value="Merienda:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JSpinner" name="jSpinner4">
+        <Component class="javax.swing.JSpinner" name="jSpinnerDesayuno">
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField4">
+        <Component class="javax.swing.JTextField" name="JTDesayuno">
           <Properties>
             <Property name="text" type="java.lang.String" value="kcal"/>
           </Properties>
@@ -970,7 +970,7 @@
                               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="jTextField16" min="-2" pref="111" max="-2" attributes="0"/>
+                              <Component id="JTCaloriasTotales" min="-2" pref="111" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -983,14 +983,14 @@
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                       <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jTextField16" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="JTCaloriasTotales" min="-2" pref="35" max="-2" attributes="0"/>
                       <EmptySpace pref="26" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JTextField" name="jTextField16">
+            <Component class="javax.swing.JTextField" name="JTCaloriasTotales">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="0"/>
@@ -998,7 +998,7 @@
                 <Property name="horizontalAlignment" type="int" value="0"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField16ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JTCaloriasTotalesActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel21">

@@ -33,5 +33,21 @@ public class AlimentoData {
 
       return alimentos;
   }
+    
+    public int obtenerCaloriasPor100g(String nombreAlimento) {
+        String query = "SELECT caloriasPor100g FROM alimento WHERE nombre = ?";
+        try (PreparedStatement stmt = con.prepareStatement(query)) {
+            stmt.setString(1, nombreAlimento);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return rs.getInt("caloriasPor100g");
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al obtener calorías: " + e.getMessage());
+        }
+        return 0; // Retornar 0 si no se encuentran las calorías
+    }
+
 
 }
