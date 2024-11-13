@@ -27,31 +27,20 @@ public class Conexion {
 
     public static Connection getConexion() {
         if (con == null) {
-            conexion = new Conexion();
-
             try {
                 con = (Connection) DriverManager.getConnection(
-                        DATABASE_URL
-                        + DATABASE_HOST
-                        + DATABASE_PUERTO
-                        + DATABASE_DB
-                        + "?useLegacyDatetimeCode=false&serverTimezone=UTC"
-                        + "&user="
-                        + DATABASE_USUARIO
-                        + "&password="
-                        + DATABASE_PASSWORD
+                        DATABASE_URL + DATABASE_HOST + DATABASE_PUERTO + DATABASE_DB
+                        + "?useLegacyDatetimeCode=false&serverTimezone=UTC",
+                        DATABASE_USUARIO, DATABASE_PASSWORD
                 );
-
-                Statement miStatement = con.createStatement();
-                ResultSet miResultSet = miStatement.executeQuery("SELECT * FROM PACIENTE");
-
-                System.out.println("Conectado");
+                System.out.println("Conectado exitosamente");
             } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
+                System.out.println("Error en la conexión: " + ex.getMessage());
             }
         }
         return con;
     }
+
 
     public static void main(String[] args) {
         Connection conexion = Conexion.getConexion();
