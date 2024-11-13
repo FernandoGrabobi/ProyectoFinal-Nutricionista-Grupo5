@@ -133,13 +133,7 @@ public class PrincipalVista extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu2ActionPerformed
 
     private void jRBMFormulario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBMFormulario1ActionPerformed
-        escritorio.removeAll();
-        escritorio.repaint();
-        DietaVista diet = new DietaVista();
-        escritorio.add(diet);
-        diet.setVisible(true);
-        diet.setSize(700,1200);
-        escritorio.moveToFront(diet);
+       new DietaVista().setVisible(true);
     }//GEN-LAST:event_jRBMFormulario1ActionPerformed
 
     /**
