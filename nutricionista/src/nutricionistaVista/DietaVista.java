@@ -135,20 +135,20 @@ public class DietaVista extends javax.swing.JFrame {
      //Funcion para cargar datos del profesional.
      public void cargarDatosProfesional(){
      
-     String nombrex = nutri.getNombre();
-     String apellidox = nutri.getApellido();
-     String correo = nutri.getCorreo();
-     String telefono = String.valueOf(nutri.getTelefono());
-     
-     nutriNombre.setText(nombrex);
-     nutriApellido.setText(apellidox);
-     nutriEmail.setText(correo);
-     nutriTelefono.setText(telefono);
-     
-     nutriNombre.setEditable(false);
-     nutriApellido.setEditable(false);
-     nutriTelefono.setEditable(false);
-     nutriEmail.setEditable(false);
+        String nombrex = nutri.getNombre();
+        String apellidox = nutri.getApellido();
+        String correo = nutri.getCorreo();
+        String telefono = String.valueOf(nutri.getTelefono());
+
+        nutriNombre.setText(nombrex);
+        nutriApellido.setText(apellidox);
+        nutriEmail.setText(correo);
+        nutriTelefono.setText(telefono);
+
+        nutriNombre.setEditable(false);
+        nutriApellido.setEditable(false);
+        nutriTelefono.setEditable(false);
+        nutriEmail.setEditable(false);
      }
      
      public void anularDatosPaciente(){
@@ -262,7 +262,6 @@ public class DietaVista extends javax.swing.JFrame {
            listaDeRenglones.add(renglonCena);
            listaDeRenglones.add(renglonColacion);
             
-                
            
     }
 

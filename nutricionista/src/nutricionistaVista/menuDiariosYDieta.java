@@ -119,11 +119,39 @@ public class menuDiariosYDieta extends javax.swing.JPanel {
             outputColacion3.setEditable(false);
             outputColacion4.setEditable(false);
             outputColacion5.setEditable(false);
-            
-            
-            
-            
+               
      }
+    
+    public void rellenarMenuDiario(){
+            outputDesayuno1.setText("");
+            outputDesayuno2.setText("");
+            outputDesayuno3.setText("");
+            outputDesayuno4.setText("");
+            outputDesayuno5.setText("");
+            outputAlmuerzo1.setText("");
+            outputAlmuerzo2.setText("");
+            outputAlmuerzo3.setText("");
+            outputAlmuerzo4.setText("");
+            outputAlmuerzo5.setText("");
+            outputMerienda1.setText("");
+            outputMerienda2.setText("");
+            outputMerienda3.setText("");
+            outputMerienda4.setText("");
+            outputMerienda5.setText("");
+            outputCena1.setText("");
+            outputCena2.setText("");
+            outputCena3.setText("");
+            outputCena4.setText("");
+            outputCena5.setText("");
+            outputColacion1.setText("");
+            outputColacion2.setText("");
+            outputColacion3.setText("");
+            outputColacion4.setText("");
+            outputColacion5.setText("");
+    
+    
+    
+    }
    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
