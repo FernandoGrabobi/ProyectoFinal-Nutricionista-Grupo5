@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Alimento {
     
-    private String codComida;
+    private int codComida;
     private String nombre;
     private double caloriasPorPorcion; // por 100g
     private String tipo; // desayuno, merienda, etc.
@@ -16,7 +16,7 @@ public class Alimento {
     private boolean libreDeTACC;
     private boolean lacteo;
 
-    public Alimento(String codComida, String nombre, double caloriasPorPorcion, String tipo, String detalle, boolean baja, boolean aptoVegetariano, boolean libreDeTACC, boolean lacteo) {
+    public Alimento(int codComida, String nombre, double caloriasPorPorcion, String tipo, String detalle, boolean baja, boolean aptoVegetariano, boolean libreDeTACC, boolean lacteo) {
         this.codComida = codComida;
         this.nombre = nombre;
         this.caloriasPorPorcion = caloriasPorPorcion;
@@ -29,11 +29,11 @@ public class Alimento {
     }
     
     
-    public String getCodComida() {
+    public int getCodComida() {
         return codComida;
     }
 
-    public void setCodComida(String codComida) {
+    public void setCodComida(int codComida) {
         this.codComida = codComida;
     }
 
@@ -100,6 +100,11 @@ public class Alimento {
     public void setLacteo(boolean lacteo) {
         this.lacteo = lacteo;
     }
+
+    @Override
+    public String toString() {
+        return "Alimento{" + "codComida=" + codComida + ", nombre=" + nombre + ", caloriasPorPorcion=" + caloriasPorPorcion + ", tipo=" + tipo + ", detalle=" + detalle + ", baja=" + baja + ", aptoVegetariano=" + aptoVegetariano + ", libreDeTACC=" + libreDeTACC + ", lacteo=" + lacteo + '}';
+    }
     
     
     
@@ -137,20 +142,6 @@ public class Alimento {
         return filtrados;
     }
     
-    public void filtrarAlimentoVeg(){
-    
-    }
-     public void filtrarAlimentoTACC(){
-         
-    }
-    public void filtrarLacteo(){
-        
-    }
-    public void modificarAlimento() {
-
-    }
-    
-
 
 
 }

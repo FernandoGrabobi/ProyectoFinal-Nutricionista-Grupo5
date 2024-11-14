@@ -3,7 +3,9 @@ package nutricionistaVista;
 import conexion.AlimentoData;
 import conexion.Conexion;
 import conexion.PacienteData;
+import entidades.Alimento;
 import entidades.Profesional;
+import entidades.RenglonMenu;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.sql.PreparedStatement;
@@ -27,6 +29,7 @@ public class DietaVista extends javax.swing.JFrame {
      initComponents();
      con = Conexion.getConexion();
      cargarDatosProfesional();
+     anularDatosPaciente();
      pacienteData = new PacienteData();
      alimentoData = new AlimentoData();
      
@@ -65,7 +68,7 @@ public class DietaVista extends javax.swing.JFrame {
     
      }
      
-     private void setupCaloriasListeners() {
+    private void setupCaloriasListeners() {
         CBDesayuno.addActionListener(e -> mostrarCalorias(CBDesayuno, JTDesayuno));
         CBAlmuerzo.addActionListener(e -> mostrarCalorias(CBAlmuerzo, JTAlmuerzo));
         CBMerienda.addActionListener(e -> mostrarCalorias(CBMerienda, JTMerienda));
@@ -80,28 +83,27 @@ public class DietaVista extends javax.swing.JFrame {
         jSpinnerColaciones.addChangeListener(e -> actualizarCaloriasTotales());
     }
 
-        // Método para mostrar las calorías en el JTextField correspondiente
-        private void mostrarCalorias(JComboBox<String> comboBox, JTextField textField) {
+      // Método para mostrar las calorías en el JTextField correspondiente
+    private void mostrarCalorias(JComboBox<String> comboBox, JTextField textField) {
             String alimentoSeleccionado = (String) comboBox.getSelectedItem();
             if (alimentoSeleccionado != null && !alimentoSeleccionado.isEmpty()) {
                 int calorias = alimentoData.obtenerCaloriasPor100g(alimentoSeleccionado);
                 textField.setText(String.valueOf(calorias));
             }
         }
+        
+    private void actualizarCaloriasTotales() {
+        int totalCalorias = 0;
+        totalCalorias += obtenerCaloriasConPorciones(CBDesayuno, jSpinnerDesayuno, JTDesayuno);
+        totalCalorias += obtenerCaloriasConPorciones(CBAlmuerzo, jSpinnerAlmuerzo, JTAlmuerzo);
+        totalCalorias += obtenerCaloriasConPorciones(CBMerienda, jSpinnerMerienda, JTMerienda);
+        totalCalorias += obtenerCaloriasConPorciones(CBCena, jSpinnerCena, JTCena);
+        totalCalorias += obtenerCaloriasConPorciones(CBColaciones, jSpinnerColaciones, JTColaciones);
+        JTCaloriasTotales.setText(String.valueOf(totalCalorias));
+     }
 
-     
-      private void actualizarCaloriasTotales() {
-             int totalCalorias = 0;
-            totalCalorias += obtenerCaloriasConPorciones(CBDesayuno, jSpinnerDesayuno, JTDesayuno);
-            totalCalorias += obtenerCaloriasConPorciones(CBAlmuerzo, jSpinnerAlmuerzo, JTAlmuerzo);
-            totalCalorias += obtenerCaloriasConPorciones(CBMerienda, jSpinnerMerienda, JTMerienda);
-            totalCalorias += obtenerCaloriasConPorciones(CBCena, jSpinnerCena, JTCena);
-            totalCalorias += obtenerCaloriasConPorciones(CBColaciones, jSpinnerColaciones, JTColaciones);
-            JTCaloriasTotales.setText(String.valueOf(totalCalorias));
-        }
-
-        // Función para obtener las calorías multiplicadas por las porciones
-       private int obtenerCaloriasConPorciones(JComboBox<String> comboBox, JSpinner spinner, JTextField textField) {
+      // Función para obtener las calorías multiplicadas por las porciones
+    private int obtenerCaloriasConPorciones(JComboBox<String> comboBox, JSpinner spinner, JTextField textField) {
             String alimentoSeleccionado = (String) comboBox.getSelectedItem();
             if (alimentoSeleccionado != null && !alimentoSeleccionado.isEmpty()) {
                 int caloriasPor100g = alimentoData.obtenerCaloriasPor100g(alimentoSeleccionado);
@@ -114,8 +116,6 @@ public class DietaVista extends javax.swing.JFrame {
             return 0;
         }
 
-     
-        
         
      //Funcion para cargar datos del profesional.
      public void cargarDatosProfesional(){
@@ -134,6 +134,22 @@ public class DietaVista extends javax.swing.JFrame {
      nutriApellido.setEditable(false);
      nutriTelefono.setEditable(false);
      nutriEmail.setEditable(false);
+     }
+     
+     public void anularDatosPaciente(){
+     
+         //Anular modificacion de datos en tasa metabolica
+         JTTasaMB.setEditable(false);
+         
+         //Anular modificacion de datos en datos del paciente
+            outputNombre.setEditable(false);
+            outputApellido.setEditable(false);
+            outputEdad.setEditable(false);
+            outputAltura.setEditable(false);
+            outputPesoActual.setEditable(false);
+            outputPesoBuscado.setEditable(false);
+            outputGenero.setEditable(false);
+            outputCondicion.setEditable(false);
      }
      
      public void cargarDatosPaciente(String nombrePaciente) {
@@ -155,11 +171,51 @@ public class DietaVista extends javax.swing.JFrame {
             outputPesoBuscado.setText(rs.getString("pesoBuscado"));
             outputGenero.setText(rs.getString("sexo"));
             outputCondicion.setText(rs.getString("condicionEspecial"));
+            
+            
+            
         }
     } catch (SQLException e) {
         JOptionPane.showMessageDialog(null, "Error al cargar los datos del paciente: " + e.toString());
     }
 }
+     
+     private void calcularTasaMetabolica() {
+        try {
+            // Convierte los valores de los JTextFields a float, después de verificar que no están vacíos
+            float tmb = 0;
+            float pesoActualSeleccionado = Float.parseFloat(outputPesoActual.getText().trim());
+            float edadSeleccionado = Float.parseFloat(outputEdad.getText().trim());
+            float alturaSeleccionado = Float.parseFloat(outputAltura.getText().trim());
+
+            // Compara el género usando equals
+            if (outputGenero.getText().equalsIgnoreCase("hombre")) {
+                tmb = (float) (88.362 + (13.397 * pesoActualSeleccionado) + (4.799 * alturaSeleccionado) - (5.677 * edadSeleccionado));
+            } else if (outputGenero.getText().equalsIgnoreCase("mujer")) {
+                tmb = (float) (447.593 + (9.247 * pesoActualSeleccionado) + (3.098 * alturaSeleccionado) - (4.330 * edadSeleccionado));
+            } else {
+                JOptionPane.showMessageDialog(this, "No hay pacientes seleccionados, asegurese de ingresar un genero valido");
+            }
+
+            // Establece el valor calculado en JTTasaMB
+            JTTasaMB.setText(String.valueOf(tmb));
+
+        } catch (NumberFormatException e) {
+            System.out.println("Error: Asegurate de que todos los campos de peso, edad y altura contienen valores numericos.");
+        }
+    }
+          
+     private void crearRenglonMenu(){
+            String selectedItem = (String) CBDesayuno.getSelectedItem();
+            System.out.println("tuki" +selectedItem);
+            alimentoData.obtenerAlimentoPorNombre(selectedItem);
+            System.out.println(alimentoData.obtenerAlimentoPorNombre(selectedItem).toString());
+                
+           
+    }
+
+   
+          
             
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -221,8 +277,9 @@ public class DietaVista extends javax.swing.JFrame {
         jSpinnerColaciones = new javax.swing.JSpinner();
         JTColaciones = new javax.swing.JTextField();
         jPanel11 = new javax.swing.JPanel();
-        jTextField13 = new javax.swing.JTextField();
+        JTTasaMB = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jButtonSalirDIA2 = new javax.swing.JButton();
         jButtonSalirDIA1 = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
@@ -640,29 +697,39 @@ public class DietaVista extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jTextField13.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextField13.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField13.addActionListener(new java.awt.event.ActionListener() {
+        JTTasaMB.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        JTTasaMB.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        JTTasaMB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField13ActionPerformed(evt);
+                JTTasaMBActionPerformed(evt);
             }
         });
 
         jLabel16.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
         jLabel16.setText("Tasa Metabólica Basal");
 
+        jButton1.setText("Calcular");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
-                .addContainerGap(41, Short.MAX_VALUE)
-                .addComponent(jLabel16)
-                .addGap(37, 37, 37))
-            .addGroup(jPanel11Layout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton1)
+                    .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel11Layout.createSequentialGroup()
+                            .addGap(74, 74, 74)
+                            .addComponent(JTTasaMB, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel11Layout.createSequentialGroup()
+                            .addGap(51, 51, 51)
+                            .addComponent(jLabel16))))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -670,8 +737,10 @@ public class DietaVista extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addComponent(jLabel16)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addComponent(JTTasaMB, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
+                .addGap(12, 12, 12))
         );
 
         jButtonSalirDIA2.setText("Continuar");
@@ -702,7 +771,7 @@ public class DietaVista extends javax.swing.JFrame {
         });
 
         jLabel21.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
-        jLabel21.setText("Caloritas totales por dia");
+        jLabel21.setText("Calorias totales por dia");
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
@@ -819,7 +888,7 @@ public class DietaVista extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(105, 105, 105)
+                .addGap(80, 80, 80)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButtonSalirDIA2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -862,7 +931,7 @@ public class DietaVista extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -885,16 +954,16 @@ public class DietaVista extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSalirDIA1ActionPerformed
 
     private void jButtonSalirDIA2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirDIA2ActionPerformed
-        // TODO add your handling code here:
+        crearRenglonMenu();
     }//GEN-LAST:event_jButtonSalirDIA2ActionPerformed
 
     private void CBDesayunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBDesayunoActionPerformed
 
     }//GEN-LAST:event_CBDesayunoActionPerformed
 
-    private void jTextField13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField13ActionPerformed
+    private void JTTasaMBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTTasaMBActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField13ActionPerformed
+    }//GEN-LAST:event_JTTasaMBActionPerformed
 
     private void outputNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_outputNombreActionPerformed
         // TODO add your handling code here:
@@ -947,6 +1016,13 @@ public class DietaVista extends javax.swing.JFrame {
 
     }//GEN-LAST:event_CBColacionesActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       calcularTasaMetabolica();
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    
     /**
      * @param args the command line arguments
      */
@@ -997,6 +1073,8 @@ public class DietaVista extends javax.swing.JFrame {
     private javax.swing.JTextField JTColaciones;
     private javax.swing.JTextField JTDesayuno;
     private javax.swing.JTextField JTMerienda;
+    private javax.swing.JTextField JTTasaMB;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonSalirDIA1;
     private javax.swing.JButton jButtonSalirDIA2;
     private javax.swing.JLabel jCondiAlimenticia;
@@ -1037,7 +1115,6 @@ public class DietaVista extends javax.swing.JFrame {
     private javax.swing.JSpinner jSpinnerColaciones;
     private javax.swing.JSpinner jSpinnerDesayuno;
     private javax.swing.JSpinner jSpinnerMerienda;
-    private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField nutriApellido;
     private javax.swing.JTextField nutriEmail;
     private javax.swing.JTextField nutriNombre;
