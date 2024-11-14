@@ -13,12 +13,11 @@ public class Dieta {
     private Paciente paciente;
     private double pesoInicial;
     private double pesoFinal;
-    private double totalCalorias;
     private ArrayList<MenuDiario> menus;
     private boolean estado;
     private String tipoDeDieta;
 
-    public Dieta(String codDieta, String nombre, Date fechaInicio, Date fechaFin, Paciente paciente, double pesoInicial, double pesoFinal, double totalCalorias, ArrayList<MenuDiario> menus, boolean estado) {
+    public Dieta(String codDieta, String nombre, Date fechaInicio, Date fechaFin, Paciente paciente, double pesoInicial, double pesoFinal, ArrayList<MenuDiario> menus, boolean estado) {
         this.codDieta = codDieta;
         this.nombre = nombre;
         this.fechaInicio = fechaInicio;
@@ -26,7 +25,6 @@ public class Dieta {
         this.paciente = paciente;
         this.pesoInicial = pesoInicial;
         this.pesoFinal = pesoFinal;
-        this.totalCalorias = totalCalorias;
         this.menus = menus;
         this.estado = estado;
     }
@@ -89,13 +87,6 @@ public class Dieta {
         this.pesoFinal = pesoFinal;
     }
 
-    public double getCaloriasTotal() {
-        return totalCalorias;
-    }
-
-    public void setCaloriasTotal(double caloriasTotal) {
-        this.totalCalorias = totalCalorias;
-    }
 
     public ArrayList<MenuDiario> getMenus() {
         return menus;
@@ -103,14 +94,6 @@ public class Dieta {
 
     public void setMenus(ArrayList<MenuDiario> menus) {
         this.menus = menus;
-    }
-
-    public double getTotalCalorias() {
-        return totalCalorias;
-    }
-
-    public void setTotalCalorias(double totalCalorias) {
-        this.totalCalorias = totalCalorias;
     }
 
     public boolean isEstado() {
@@ -131,8 +114,6 @@ public class Dieta {
     
     
     
-   
-    
     /*FUNCIONES*/
 
     public void cargarPeso(double nuevoPeso){
@@ -147,7 +128,6 @@ public class Dieta {
         System.out.println("Fecha de Fin: "+fechaFin);
         System.out.println("Peso Incial: "+pesoInicial);
         System.out.println("Peso Final: "+pesoFinal);
-        System.out.println("Calorias en Total: "+totalCalorias);
         System.out.println("Estado: "+estado);
         System.out.println("Tipo de dieta: "+tipoDeDieta);
         System.out.println("");

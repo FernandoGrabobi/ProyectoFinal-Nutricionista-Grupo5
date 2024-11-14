@@ -2,8 +2,11 @@ package nutricionistaVista;
 
 import conexion.AlimentoData;
 import conexion.Conexion;
+import conexion.DietaData;
 import conexion.PacienteData;
+import conexion.RenglonMenuData;
 import entidades.Alimento;
+import entidades.Dieta;
 import entidades.Profesional;
 import entidades.RenglonMenu;
 import java.awt.event.ItemEvent;
@@ -11,6 +14,7 @@ import java.awt.event.ItemListener;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -22,7 +26,10 @@ public class DietaVista extends javax.swing.JFrame {
     
     private AlimentoData alimentoData;
     private PacienteData pacienteData;
+    private RenglonMenuData renglonmenuData;
+    private DietaData dietadata;
     private java.sql.Connection con = null;
+    private List<RenglonMenu> listaDeRenglones= new ArrayList<>(); 
     Profesional nutri = new Profesional();
     
      public DietaVista(){
@@ -32,6 +39,8 @@ public class DietaVista extends javax.swing.JFrame {
      anularDatosPaciente();
      pacienteData = new PacienteData();
      alimentoData = new AlimentoData();
+     renglonmenuData = new RenglonMenuData();
+     dietadata = new DietaData();
      
      
      
@@ -206,10 +215,47 @@ public class DietaVista extends javax.swing.JFrame {
     }
           
      private void crearRenglonMenu(){
-            String selectedItem = (String) CBDesayuno.getSelectedItem();
-            System.out.println("tuki" +selectedItem);
-            alimentoData.obtenerAlimentoPorNombre(selectedItem);
-            System.out.println(alimentoData.obtenerAlimentoPorNombre(selectedItem).toString());
+           String selectedItemDes = (String) CBDesayuno.getSelectedItem();
+           int valorSpinnerDesayuno = (Integer) jSpinnerDesayuno.getValue();
+           int valorJTCaloriasDesayuno = Integer.parseInt(JTDesayuno.getText());
+           alimentoData.obtenerAlimentoPorNombre(selectedItemDes);
+           RenglonMenu renglonDesayuno = new RenglonMenu(1,alimentoData.obtenerAlimentoPorNombre(selectedItemDes),valorSpinnerDesayuno, valorJTCaloriasDesayuno);
+           renglonmenuData.agregarRenglon(renglonDesayuno);
+           
+           String selectedItemAlm = (String) CBAlmuerzo.getSelectedItem();
+           int valorSpinnerAlmuerzo = (Integer) jSpinnerAlmuerzo.getValue();
+           int valorJTCaloriasAlmuerzo = Integer.parseInt(JTAlmuerzo.getText());
+           alimentoData.obtenerAlimentoPorNombre(selectedItemAlm);
+           RenglonMenu renglonAlmuerzo = new RenglonMenu(2,alimentoData.obtenerAlimentoPorNombre(selectedItemAlm),valorSpinnerAlmuerzo, valorJTCaloriasAlmuerzo);
+           renglonmenuData.agregarRenglon(renglonAlmuerzo);
+           
+           String selectedItemMer = (String) CBMerienda.getSelectedItem();
+           int valorSpinnerMerienda = (Integer) jSpinnerMerienda.getValue();
+           int valorJTCaloriasMerienda = Integer.parseInt(JTMerienda.getText());
+           alimentoData.obtenerAlimentoPorNombre(selectedItemMer);
+           RenglonMenu renglonMerienda = new RenglonMenu(3,alimentoData.obtenerAlimentoPorNombre(selectedItemMer),valorSpinnerMerienda, valorJTCaloriasMerienda);
+           renglonmenuData.agregarRenglon(renglonMerienda);
+           
+           String selectedItemCena = (String) CBCena.getSelectedItem();
+           int valorSpinnerCena = (Integer) jSpinnerCena.getValue();
+           int valorJTCaloriasCena = Integer.parseInt(JTCena.getText());
+           alimentoData.obtenerAlimentoPorNombre(selectedItemCena);
+           RenglonMenu renglonCena = new RenglonMenu(4,alimentoData.obtenerAlimentoPorNombre(selectedItemCena),valorSpinnerCena, valorJTCaloriasCena);
+           renglonmenuData.agregarRenglon(renglonCena);
+           
+           String selectedItemCol = (String) CBColaciones.getSelectedItem();
+           int valorSpinnerColacion = (Integer) jSpinnerColaciones.getValue();
+           int valorJTCaloriasColacion = Integer.parseInt(JTColaciones.getText());
+           alimentoData.obtenerAlimentoPorNombre(selectedItemCol);
+           RenglonMenu renglonColacion = new RenglonMenu(5,alimentoData.obtenerAlimentoPorNombre(selectedItemCol),valorSpinnerColacion, valorJTCaloriasColacion);
+           renglonmenuData.agregarRenglon(renglonColacion);
+           
+           listaDeRenglones.add(renglonDesayuno);
+           listaDeRenglones.add(renglonAlmuerzo);
+           listaDeRenglones.add(renglonMerienda);
+           listaDeRenglones.add(renglonCena);
+           listaDeRenglones.add(renglonColacion);
+            
                 
            
     }
@@ -761,6 +807,11 @@ public class DietaVista extends javax.swing.JFrame {
         jLabel19.setText("Merienda:");
 
         JTDesayuno.setText("kcal");
+        JTDesayuno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JTDesayunoActionPerformed(evt);
+            }
+        });
 
         JTCaloriasTotales.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         JTCaloriasTotales.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -1021,6 +1072,10 @@ public class DietaVista extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void JTDesayunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTDesayunoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JTDesayunoActionPerformed
 
     
     /**

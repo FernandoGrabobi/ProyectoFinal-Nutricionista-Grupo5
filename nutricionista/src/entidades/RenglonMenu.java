@@ -3,18 +3,20 @@ package entidades;
 
 public class RenglonMenu {
     
-    private int nroRenglon;
+    private int nroRenglon, idRenglon;
     private Alimento alimento;
-    private double cantidad; // en gramos
-    private double subtotalCalorias;
+    private int cantidad; // en gramos
+    private int subtotalCalorias;
 
-    public RenglonMenu(int nroRenglon, Alimento alimento, double cantidad) {
+    public RenglonMenu(int nroRenglon, Alimento alimento, int cantidad, int subtotalCalorias) {
         this.nroRenglon = nroRenglon;
         this.alimento = alimento;
         this.cantidad = cantidad;
-        this.subtotalCalorias = calcularSubTotalCalorias();
+        this.subtotalCalorias = subtotalCalorias;
+
     }
 
+   
     public int getNroRenglon() {
         return nroRenglon;
     }
@@ -29,44 +31,32 @@ public class RenglonMenu {
 
     public void setAlimento(Alimento alimento) {
         this.alimento = alimento;
-        this.subtotalCalorias = calcularSubTotalCalorias(); // deberia cambiar el total de calorias si se cambia la cantidad de alimento
     }
 
-    public double getCantidad() {
+    public int getCantidad() {
         return cantidad;
     }
 
-    public void setCantidad(double cantidad) {
+    public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
-        this.subtotalCalorias = calcularSubTotalCalorias();//deberia
     }
 
-    public double getSubtotalCalorias() {
+    public int getSubtotalCalorias() {
         return subtotalCalorias;
     }
 
-    public void setSubtotalCalorias(double subtotalCalorias) {
+    public void setSubtotalCalorias(int subtotalCalorias) {
         this.subtotalCalorias = subtotalCalorias;
     }
-    
 
-    /*FUNCIONES*/
-
-    public void modificarRenglon(double nuevaCantidad, Alimento nuevoAlimento){
-        setCantidad(nuevaCantidad);
-        setAlimento(nuevoAlimento);
+    public int getIdRenglon() {
+        return idRenglon;
     }
 
-    public void imprimirRenglon(){
-        System.out.println("Nombre: "+alimento.getNombre()+" - Renglon: "+nroRenglon+" - Cantidad: "+cantidad+" - Calorias: "+subtotalCalorias);
-
-    }
-
-    public void addAlimento(Alimento nuevoAlimento){
-        setAlimento(nuevoAlimento);
+    public void setIdRenglon(int idRenglon) {
+        this.idRenglon = idRenglon;
     }
     
-    private double calcularSubTotalCalorias(){
-        return (alimento.getCaloriasPorPorcion() / 100)*cantidad;
-    }
+    
+
 }
