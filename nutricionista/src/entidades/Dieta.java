@@ -34,6 +34,9 @@ public class Dieta {
     public String getCodDieta() {
         return codDieta;
     }
+     public int getCodDietaInt() {
+        return  Integer.parseInt(codDieta);
+    }
 
     public void setCodDieta(String codDieta) {
         this.codDieta = codDieta;
@@ -42,6 +45,7 @@ public class Dieta {
     public String getNombre() {
         return nombre;
     }
+   
 
     public void setNombre(String nombre) {
         this.nombre = nombre;

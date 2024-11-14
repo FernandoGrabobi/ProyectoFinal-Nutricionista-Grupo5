@@ -3,10 +3,13 @@ package nutricionistaVista;
 import conexion.AlimentoData;
 import conexion.Conexion;
 import conexion.DietaData;
+import conexion.MenuDiarioData;
 import conexion.PacienteData;
 import conexion.RenglonMenuData;
 import entidades.Alimento;
 import entidades.Dieta;
+import entidades.MenuDiario;
+import entidades.Paciente;
 import entidades.Profesional;
 import entidades.RenglonMenu;
 import java.awt.event.ItemEvent;
@@ -15,6 +18,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -31,6 +35,8 @@ public class DietaVista extends javax.swing.JFrame {
     private java.sql.Connection con = null;
     private List<RenglonMenu> listaDeRenglones= new ArrayList<>();
     Profesional nutri = new Profesional();
+    private int contadorClics = 0;
+
     
      public DietaVista(){
      initComponents();
@@ -995,7 +1001,27 @@ public class DietaVista extends javax.swing.JFrame {
 
     private void jButtonSalirDIA2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirDIA2ActionPerformed
         crearRenglonMenu();
+        /*   contadorClics++;
 
+           if (contadorClics == 5) {
+             Dieta dieta = new Dieta("Dieta de ejemplo",new Date(), new Date(),new Paciente(123), 
+                   70.0, // Peso inicial
+                   68.0, // Peso final
+                   true, // Estado
+                   "Baja en carbohidratos" // Tipo de dieta
+               );
+
+   
+               MenuDiario menuDiario = new MenuDiario(1,Integer.parseInt(JTCaloriasTotales.getText()), (ArrayList<RenglonMenu>) listaDeRenglones,"Activa",dieta);
+
+              dietadata.agregarDieta(dieta);
+
+               MenuDiarioData menuDiarioData = new MenuDiarioData();
+              menuDiarioData.agregarMenuDiario(menuDiario);
+               contadorClics = 0;
+               JOptionPane.showMessageDialog(null, "Dieta y Menú Diario creados con éxito.");
+               
+           }*/
         
     }//GEN-LAST:event_jButtonSalirDIA2ActionPerformed
 

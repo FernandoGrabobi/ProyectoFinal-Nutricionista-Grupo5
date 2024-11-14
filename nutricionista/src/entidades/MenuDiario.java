@@ -7,13 +7,12 @@ public class MenuDiario {
     
     private int codMenu;
     private int dia;
-    private double caloriasDelMenu;
+    private int caloriasDelMenu;
     private ArrayList<RenglonMenu> renglones;
     private String estado;
     private Dieta dieta;
 
-    public MenuDiario(int codMenu, int dia, double caloriasDelMenu, ArrayList<RenglonMenu> renglones, String estado, Dieta dieta) {
-        this.codMenu = codMenu;
+    public MenuDiario( int dia, int caloriasDelMenu, ArrayList<RenglonMenu> renglones, String estado, Dieta dieta) {
         this.dia = dia;
         this.caloriasDelMenu = caloriasDelMenu;
         this.renglones = renglones;
@@ -39,11 +38,11 @@ public class MenuDiario {
         this.dia = dia;
     }
 
-    public double getCaloriasDelMenu() {
+    public int getCaloriasDelMenu() {
         return caloriasDelMenu;
     }
 
-    public void setCaloriasDelMenu(double caloriasDelMenu) {
+    public void setCaloriasDelMenu(int caloriasDelMenu) {
         this.caloriasDelMenu = caloriasDelMenu;
     }
 
@@ -61,6 +60,10 @@ public class MenuDiario {
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    public Dieta getDieta() {
+        return dieta;
     }
     
 
@@ -100,7 +103,7 @@ public class MenuDiario {
         for(RenglonMenu renglon : renglones){
             totalCalorias += renglon.getSubtotalCalorias();
         }
-        this.caloriasDelMenu = totalCalorias;
+        this.caloriasDelMenu = (int) totalCalorias;
     }
 
     
