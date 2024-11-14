@@ -29,7 +29,7 @@ public class DietaVista extends javax.swing.JFrame {
     private RenglonMenuData renglonmenuData;
     private DietaData dietadata;
     private java.sql.Connection con = null;
-    private List<RenglonMenu> listaDeRenglones= new ArrayList<>(); 
+    private List<RenglonMenu> listaDeRenglones= new ArrayList<>();
     Profesional nutri = new Profesional();
     
      public DietaVista(){
@@ -299,7 +299,6 @@ public class DietaVista extends javax.swing.JFrame {
         nutriTelefono = new javax.swing.JTextField();
         nutriEmail = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
-        jLabel22 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         CBAlmuerzo = new javax.swing.JComboBox<>();
@@ -575,10 +574,6 @@ public class DietaVista extends javax.swing.JFrame {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jLabel22.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel22.setText("DIA 1");
-
         jLabel17.setBackground(new java.awt.Color(0, 0, 0));
         jLabel17.setForeground(new java.awt.Color(0, 0, 0));
         jLabel17.setText("Desayuno:");
@@ -853,10 +848,6 @@ public class DietaVista extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(390, 390, 390)
-                .addComponent(jLabel22)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(55, 55, 55)
                 .addComponent(jLabel17)
                 .addGap(186, 186, 186)
@@ -910,11 +901,9 @@ public class DietaVista extends javax.swing.JFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(49, 49, 49)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel22)
-                        .addGap(28, 28, 28)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel18)
                             .addComponent(jLabel17))
@@ -1006,6 +995,8 @@ public class DietaVista extends javax.swing.JFrame {
 
     private void jButtonSalirDIA2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirDIA2ActionPerformed
         crearRenglonMenu();
+
+        
     }//GEN-LAST:event_jButtonSalirDIA2ActionPerformed
 
     private void CBDesayunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBDesayunoActionPerformed
@@ -1151,7 +1142,6 @@ public class DietaVista extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;

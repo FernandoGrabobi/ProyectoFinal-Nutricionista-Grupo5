@@ -32,7 +32,7 @@ public class RenglonMenuData {
             
             if(rs.next()){
                 renglonmenu.setIdRenglon(rs.getInt(1));
-                JOptionPane.showMessageDialog(null," - Paciente añadido con exito.");
+                JOptionPane.showMessageDialog(null," - Paciente renglon añadido con exito.");
             }
             ps.close();
             

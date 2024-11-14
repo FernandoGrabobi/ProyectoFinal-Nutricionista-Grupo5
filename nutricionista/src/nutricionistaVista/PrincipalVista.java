@@ -39,6 +39,7 @@ public class PrincipalVista extends javax.swing.JFrame {
         jRBMFormulario1 = new javax.swing.JRadioButtonMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
+        jConsultarDieta = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -93,6 +94,15 @@ public class PrincipalVista extends javax.swing.JFrame {
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Consultar");
+
+        jConsultarDieta.setText("Consultar dieta");
+        jConsultarDieta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jConsultarDietaActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jConsultarDieta);
+
         jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
@@ -136,6 +146,16 @@ public class PrincipalVista extends javax.swing.JFrame {
        new DietaVista().setVisible(true);
     }//GEN-LAST:event_jRBMFormulario1ActionPerformed
 
+    private void jConsultarDietaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConsultarDietaActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        menuDiariosYDieta consu = new menuDiariosYDieta();   
+        escritorio.add(consu);
+        consu.setVisible(true);
+     consu.setSize(1200, 800);
+        escritorio.moveToFront(consu);
+    }//GEN-LAST:event_jConsultarDietaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -173,6 +193,7 @@ public class PrincipalVista extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane escritorio;
+    private javax.swing.JMenuItem jConsultarDieta;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
