@@ -30,7 +30,7 @@ public class menuDiariosYDieta extends javax.swing.JPanel {
         con = Conexion.getConexion();
         pacienteData = new PacienteData();
         cargarDatosProfesional();
-        //inicializarJText();
+        inicializarJText();
         anularDatosPaciente();
         
         miPanel.setVisible(true);  // Asegura que el panel sea visible
@@ -86,60 +86,60 @@ public class menuDiariosYDieta extends javax.swing.JPanel {
         nutriEmail2.setText("CorreoJuanjo123@hotmail.com");
    }
    
-   /* public void inicializarJText(){
-            outputDesayuno1 = new JTextField();
+   public void inicializarJText(){
+            //outputDesayuno1 = new JTextField();
             miPanel.add(outputDesayuno1);
-            outputDesayuno2= new JTextField();
+            //outputDesayuno2= new JTextField();
             miPanel.add(outputDesayuno2);
-            outputDesayuno3= new JTextField();
+            //outputDesayuno3= new JTextField();
             miPanel.add(outputDesayuno3);
-            outputDesayuno4= new JTextField();
+            //outputDesayuno4= new JTextField();
             miPanel.add(outputDesayuno4);
-            outputDesayuno5= new JTextField();
+            //outputDesayuno5= new JTextField();
             miPanel.add(outputDesayuno5);
-            outputAlmuerzo1= new JTextField();
+            //outputAlmuerzo1= new JTextField();
             miPanel.add(outputAlmuerzo1);
-            outputAlmuerzo2= new JTextField();
+            //outputAlmuerzo2= new JTextField();
             miPanel.add(outputAlmuerzo2);
-            outputAlmuerzo3= new JTextField();
+            //outputAlmuerzo3= new JTextField();
             miPanel.add(outputAlmuerzo3);
-            outputAlmuerzo4= new JTextField();
+            //outputAlmuerzo4= new JTextField();
             miPanel.add(outputAlmuerzo4);
-            outputAlmuerzo5= new JTextField();
+            //outputAlmuerzo5= new JTextField();
             miPanel.add(outputAlmuerzo5);
-            outputMerienda1= new JTextField();
+            //outputMerienda1= new JTextField();
             miPanel.add(outputMerienda1);
-            outputMerienda2= new JTextField();
+            //outputMerienda2= new JTextField();
             miPanel.add(outputMerienda2);
-            outputMerienda3= new JTextField();
+            //outputMerienda3= new JTextField();
             miPanel.add(outputMerienda3);
-            outputMerienda4= new JTextField();
+            //outputMerienda4= new JTextField();
             miPanel.add(outputMerienda4);
-            outputMerienda5= new JTextField();
+            //outputMerienda5= new JTextField();
             miPanel.add(outputMerienda5);
-            outputCena1= new JTextField();
+            //outputCena1= new JTextField();
             miPanel.add(outputCena1);
-            outputCena2= new JTextField();
+            //outputCena2= new JTextField();
             miPanel.add(outputCena2);
-            outputCena3= new JTextField();
+            //outputCena3= new JTextField();
             miPanel.add(outputCena3);
-            outputCena4= new JTextField();
+            //outputCena4= new JTextField();
             miPanel.add(outputCena4);
-            outputCena5= new JTextField();
+            //outputCena5= new JTextField();
             miPanel.add(outputCena5);
-            outputColacion1= new JTextField();
+            //outputColacion1= new JTextField();
             miPanel.add(outputColacion1);
-            outputColacion2= new JTextField();
+            //outputColacion2= new JTextField();
             miPanel.add(outputColacion2);
-            outputColacion3= new JTextField();
+            //outputColacion3= new JTextField();
             miPanel.add(outputColacion3);
-            outputColacion4= new JTextField();
+            //outputColacion4= new JTextField();
             miPanel.add(outputColacion4);
-            outputColacion5= new JTextField();
+            //outputColacion5= new JTextField();
             miPanel.add(outputColacion5);
-    }*/
+    }
     
-    public void anularDatosPaciente(){       
+   public void anularDatosPaciente(){       
          //Anular modificacion de datos en datos del paciente
             outputNombre2.setEditable(false);
             outputApellido2.setEditable(false);
@@ -181,8 +181,37 @@ public class menuDiariosYDieta extends javax.swing.JPanel {
                
      }
     
-   
+    
+    /*public void mostrarCoso(){
+        System.out.println("outputDesayuno1: " + outputDesayuno1);
+        System.out.println("outputAlmuerzo1: " + outputAlmuerzo1);
+         System.out.println("-------------: " + outputDesayuno2);
+        System.out.println("------------------" + outputAlmuerzo2);
+         System.out.println("outputDesayuno1: " + outputDesayuno3);
+        System.out.println("outputAlmuerzo1: " + outputAlmuerzo3);
+         System.out.println("outputDesayuno1: " + outputDesayuno4);
+        System.out.println("outputAlmuerzo1: " + outputAlmuerzo4); 
+        System.out.println("outputDesayuno1: " + outputDesayuno5);
+        System.out.println("outputDesayuno1: " + outputCena1);
+        System.out.println("outputAlmuerzo1: " + outputCena2);
+         System.out.println("outputDesayuno1: " + outputCena3);
+        System.out.println("outputAlmuerzo1: " + outputCena4); 
+        System.out.println("outputDesayuno1: " + outputCena5);
+        System.out.println("outputAlmuerzo1: " + outputMerienda1);
+         System.out.println("outputDesayuno1: " + outputMerienda2);
+        System.out.println("outputAlmuerzo1: " + outputMerienda3);
+         System.out.println("outputDesayuno1: " + outputMerienda4);
+        System.out.println("outputAlmuerzo1: " + outputColacion1);
+         System.out.println("outputDesayuno1: " + outputColacion2);
+        System.out.println("outputAlmuerzo1: " + outputColacion3);
+         System.out.println("outputDesayuno1: " + outputColacion4);
+        System.out.println("outputAlmuerzo1: " + outputColacion5);
+        
+    }*/
     public void cargarMenusEnTextFields(List<MenuDiario> menusParaDieta) {
+        
+        System.out.println("Vista activa: " + this.hashCode());
+
         if (menusParaDieta == null || menusParaDieta.size() < 5) {
             JOptionPane.showMessageDialog(null, "No se han cargado suficientes menús diarios.");
             return;
@@ -212,63 +241,47 @@ public class menuDiariosYDieta extends javax.swing.JPanel {
                     case 0:
                         System.out.println("Renglones en el menu " + x + ": " + renglones.size());
                         System.out.println("Procesando el indice: " + x);
-                        SwingUtilities.invokeLater(() -> {
                             outputDesayuno1.setText(renglones.get(0).getAlimento().getNombre());
                             outputAlmuerzo1.setText(renglones.get(1).getAlimento().getNombre());
                             outputMerienda1.setText(renglones.get(2).getAlimento().getNombre());
                             outputCena1.setText(renglones.get(3).getAlimento().getNombre());
                             outputColacion1.setText(renglones.get(4).getAlimento().getNombre());
-                        });
-
-         
                         break;
                     case 1:
                         System.out.println("Renglones en el menu " + x + ": " + renglones.size());
                         System.out.println("Procesando el indice: " + x);
-                    
-                        SwingUtilities.invokeLater(() -> {
                             outputDesayuno2.setText(renglones.get(0).getAlimento().getNombre());
                             outputAlmuerzo2.setText(renglones.get(1).getAlimento().getNombre());
                             outputMerienda2.setText(renglones.get(2).getAlimento().getNombre());
                             outputCena2.setText(renglones.get(3).getAlimento().getNombre());
                             outputColacion2.setText(renglones.get(4).getAlimento().getNombre());
-                        });
                         break;
                     case 2:  
                         System.out.println("Renglones en el menu " + x + ": " + renglones.size());
                         System.out.println("Procesando el indice: " + x);
-                        SwingUtilities.invokeLater(() -> {
                             outputDesayuno3.setText(renglones.get(0).getAlimento().getNombre());
                             outputAlmuerzo3.setText(renglones.get(1).getAlimento().getNombre());
                             outputMerienda3.setText(renglones.get(2).getAlimento().getNombre());
                             outputCena3.setText(renglones.get(3).getAlimento().getNombre());
                             outputColacion3.setText(renglones.get(4).getAlimento().getNombre());
-                        });
-
                         break;
                     case 3:
                         System.out.println("Renglones en el menu " + x + ": " + renglones.size());
                         System.out.println("Procesando el indice: " + x);
-                        
-                        SwingUtilities.invokeLater(() -> {
-                        
                         outputDesayuno4.setText(renglones.get(0).getAlimento().getNombre());
                         outputAlmuerzo4.setText(renglones.get(1).getAlimento().getNombre());
                         outputMerienda4.setText(renglones.get(2).getAlimento().getNombre());
                         outputCena4.setText(renglones.get(3).getAlimento().getNombre());
-                        outputColacion4.setText(renglones.get(4).getAlimento().getNombre());
-                        });
+                        outputColacion4.setText(renglones.get(4).getAlimento().getNombre()); 
                         break;
                     case 4:
                         System.out.println("Renglones en el menu " + x + ": " + renglones.size());
                         System.out.println("Procesando el indice: " + x);
-                        SwingUtilities.invokeLater(() -> {
                             outputDesayuno5.setText(renglones.get(0).getAlimento().getNombre());
                             outputAlmuerzo5.setText(renglones.get(1).getAlimento().getNombre());
                             outputMerienda5.setText(renglones.get(2).getAlimento().getNombre());
                             outputCena5.setText(renglones.get(3).getAlimento().getNombre());
                             outputColacion5.setText(renglones.get(4).getAlimento().getNombre());
-                        });
                         break;
                 }
             } catch (Exception ex) {
@@ -280,8 +293,6 @@ public class menuDiariosYDieta extends javax.swing.JPanel {
         }
     }
 
-
- 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

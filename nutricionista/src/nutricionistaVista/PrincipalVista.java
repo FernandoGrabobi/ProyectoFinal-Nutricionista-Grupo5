@@ -142,7 +142,7 @@ public class PrincipalVista extends javax.swing.JFrame {
         menuDiariosYDieta consu = new menuDiariosYDieta();   
         escritorio.add(consu);
         consu.setVisible(true);
-        consu.setSize(1200, 800);
+        consu.setSize(1500, 800);
         escritorio.moveToFront(consu);
     }//GEN-LAST:event_jConsultarDietaActionPerformed
 
