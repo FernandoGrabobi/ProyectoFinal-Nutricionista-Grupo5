@@ -67,13 +67,14 @@ public class RenglonMenuData {
            renglonesParaMenu.clear();
 
            JOptionPane.showMessageDialog(null, "Menú cargado correctamente para el día " + (contadorDia - 1));
-           vistaMenuDiarios.cargarMenusEnTextFields(menusParaDieta); 
+          
        } else {
            JOptionPane.showMessageDialog(null, "Faltan " + (5 - renglonesParaMenu.size()) + " renglones para completar el menú.");
        }
 
        if (menusParaDieta.size() >= 5) {
            JOptionPane.showMessageDialog(null, "Ya se cargaron los 5 MenusDiarios.");
+           vistaMenuDiarios.cargarMenusEnTextFields(menusParaDieta); 
        }
    }
 
