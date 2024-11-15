@@ -348,7 +348,7 @@ public class FormularioVista extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-      
+     
     }//GEN-LAST:event_btnSalirActionPerformed
 
     

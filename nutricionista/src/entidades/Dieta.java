@@ -26,7 +26,19 @@ public class Dieta {
         this.pesoInicial = pesoInicial;
         this.pesoFinal = pesoFinal;
         this.menus = menus;
+
+    }
+
+    public Dieta(String nombre, Date fechaInicio, Date fechaFin, Paciente paciente, double pesoInicial, double pesoFinal, ArrayList<MenuDiario> menus, boolean estado) {
+        this.nombre = nombre;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+        this.paciente = paciente;
+        this.pesoInicial = pesoInicial;
+        this.pesoFinal = pesoFinal;
+        this.menus = menus;
         this.estado = estado;
+
     }
 
    
@@ -117,33 +129,8 @@ public class Dieta {
     }
     
     
+
     
-    /*FUNCIONES*/
 
-    public void cargarPeso(double nuevoPeso){
-        this.pesoFinal = nuevoPeso;
-    }
-
-    public void imprimirDieta(){
-        System.out.println("Codigo de Dieta: "+codDieta);
-        System.out.println("Nombre de la Dieta: "+nombre);
-        System.out.println("Paciente: "+paciente.getNombre() + paciente.getApellido());
-        System.out.println("Fecha de Inicio: "+fechaInicio);
-        System.out.println("Fecha de Fin: "+fechaFin);
-        System.out.println("Peso Incial: "+pesoInicial);
-        System.out.println("Peso Final: "+pesoFinal);
-        System.out.println("Estado: "+estado);
-        System.out.println("Tipo de dieta: "+tipoDeDieta);
-        System.out.println("");
-        System.out.println("Menus:");
-        for(MenuDiario menu : menus){
-            System.out.println(" - "+menu.getCodMenu()+" (Dia "+menu.getDia()+"): "+menu.getCaloriasDelMenu()+" kcal");
-            
-        }
-    }
     
-    public void addMenu(MenuDiario menu){
-        this.menus.add(menu);
-    }
-
 }

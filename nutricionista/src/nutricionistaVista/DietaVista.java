@@ -80,9 +80,34 @@ public class DietaVista extends javax.swing.JFrame {
                        }
                    }
            });
+           
     
      }
      
+    private void calcularTipoDeDieta(){
+            try {
+             if (outputPesoActual.getText().isEmpty() || outputPesoBuscado.getText().isEmpty()) {
+                 JOptionPane.showMessageDialog(this, "Por favor, completa todos los campos.", "Error", JOptionPane.ERROR_MESSAGE);
+                 return;
+             }
+
+             int pesoAct = Integer.parseInt(outputPesoActual.getText());
+             int pesoBusc = Integer.parseInt(outputPesoBuscado.getText());
+
+             if (pesoAct < pesoBusc) {
+                 outputTipoDeDieta.setText(" HiperCalorica");
+             } else if (pesoAct > pesoBusc) {
+                 outputTipoDeDieta.setText(" HipoCalorica");
+             } else {
+                 outputTipoDeDieta.setText(" De mantenimiento");
+             }
+         } catch (NumberFormatException e) {
+             JOptionPane.showMessageDialog(this, "Por favor, ingresa números válidos en ambos campos.", "Error", JOptionPane.ERROR_MESSAGE);
+         }
+
+    }
+    
+    
     private void setupCaloriasListeners() {
         CBDesayuno.addActionListener(e -> mostrarCalorias(CBDesayuno, JTDesayuno));
         CBAlmuerzo.addActionListener(e -> mostrarCalorias(CBAlmuerzo, JTAlmuerzo));
@@ -130,7 +155,6 @@ public class DietaVista extends javax.swing.JFrame {
             // Retornar 0 si no se ha seleccionado un alimento
             return 0;
         }
-
         
      //Funcion para cargar datos del profesional.
      public void cargarDatosProfesional(){
@@ -163,37 +187,38 @@ public class DietaVista extends javax.swing.JFrame {
             outputAltura.setEditable(false);
             outputPesoActual.setEditable(false);
             outputPesoBuscado.setEditable(false);
-            outputGenero.setEditable(false);
+            outputGenero1.setEditable(false);
             outputCondicion.setEditable(false);
+            outputTipoDeDieta.setEditable(false);
      }
      
      public void cargarDatosPaciente(String nombrePaciente) {
-    String sql = "SELECT * FROM paciente WHERE nombre = ?";
-    PreparedStatement ps;
-    try {
-        ps = con.prepareStatement(sql);
-        ps.setString(1, nombrePaciente);
-        ResultSet rs = ps.executeQuery();
+        String sql = "SELECT * FROM paciente WHERE nombre = ?";
+        PreparedStatement ps;
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setString(1, nombrePaciente);
+            ResultSet rs = ps.executeQuery();
 
 
-        if (rs.next()) {
-  
-            outputNombre.setText(rs.getString("nombre"));
-            outputApellido.setText(rs.getString("apellido"));
-            outputEdad.setText(rs.getString("edad"));
-            outputAltura.setText(rs.getString("altura"));
-            outputPesoActual.setText(rs.getString("pesoActual"));
-            outputPesoBuscado.setText(rs.getString("pesoBuscado"));
-            outputGenero.setText(rs.getString("sexo"));
-            outputCondicion.setText(rs.getString("condicionEspecial"));
-            
-            
-            
+            if (rs.next()) {
+
+                outputNombre.setText(rs.getString("nombre"));
+                outputApellido.setText(rs.getString("apellido"));
+                outputEdad.setText(rs.getString("edad"));
+                outputAltura.setText(rs.getString("altura"));
+                outputPesoActual.setText(rs.getString("pesoActual"));
+                outputPesoBuscado.setText(rs.getString("pesoBuscado"));
+                outputGenero1.setText(rs.getString("sexo"));
+                outputCondicion.setText(rs.getString("condicionEspecial"));
+
+
+
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al cargar los datos del paciente: " + e.toString());
         }
-    } catch (SQLException e) {
-        JOptionPane.showMessageDialog(null, "Error al cargar los datos del paciente: " + e.toString());
     }
-}
      
      private void calcularTasaMetabolica() {
         try {
@@ -204,9 +229,9 @@ public class DietaVista extends javax.swing.JFrame {
             float alturaSeleccionado = Float.parseFloat(outputAltura.getText().trim());
 
             // Compara el género usando equals
-            if (outputGenero.getText().equalsIgnoreCase("hombre")) {
+            if (outputGenero1.getText().equalsIgnoreCase("hombre")) {
                 tmb = (float) (88.362 + (13.397 * pesoActualSeleccionado) + (4.799 * alturaSeleccionado) - (5.677 * edadSeleccionado));
-            } else if (outputGenero.getText().equalsIgnoreCase("mujer")) {
+            } else if (outputGenero1.getText().equalsIgnoreCase("mujer")) {
                 tmb = (float) (447.593 + (9.247 * pesoActualSeleccionado) + (3.098 * alturaSeleccionado) - (4.330 * edadSeleccionado));
             } else {
                 JOptionPane.showMessageDialog(this, "No hay pacientes seleccionados, asegurese de ingresar un genero valido");
@@ -218,6 +243,7 @@ public class DietaVista extends javax.swing.JFrame {
         } catch (NumberFormatException e) {
             System.out.println("Error: Asegurate de que todos los campos de peso, edad y altura contienen valores numericos.");
         }
+        calcularTipoDeDieta();
     }
           
      private void crearRenglonMenu(){
@@ -226,47 +252,45 @@ public class DietaVista extends javax.swing.JFrame {
            int valorJTCaloriasDesayuno = Integer.parseInt(JTDesayuno.getText());
            alimentoData.obtenerAlimentoPorNombre(selectedItemDes);
            RenglonMenu renglonDesayuno = new RenglonMenu(1,alimentoData.obtenerAlimentoPorNombre(selectedItemDes),valorSpinnerDesayuno, valorJTCaloriasDesayuno);
-           renglonmenuData.agregarRenglon(renglonDesayuno);
-           
+           renglonmenuData.agregarRenglon(renglonDesayuno, pacienteData.obtenerPacientePorNombre(CBPaciente.toString()));
+      
            String selectedItemAlm = (String) CBAlmuerzo.getSelectedItem();
            int valorSpinnerAlmuerzo = (Integer) jSpinnerAlmuerzo.getValue();
            int valorJTCaloriasAlmuerzo = Integer.parseInt(JTAlmuerzo.getText());
            alimentoData.obtenerAlimentoPorNombre(selectedItemAlm);
            RenglonMenu renglonAlmuerzo = new RenglonMenu(2,alimentoData.obtenerAlimentoPorNombre(selectedItemAlm),valorSpinnerAlmuerzo, valorJTCaloriasAlmuerzo);
-           renglonmenuData.agregarRenglon(renglonAlmuerzo);
-           
+           renglonmenuData.agregarRenglon(renglonAlmuerzo,pacienteData.obtenerPacientePorNombre(CBPaciente.toString()));
+     
            String selectedItemMer = (String) CBMerienda.getSelectedItem();
            int valorSpinnerMerienda = (Integer) jSpinnerMerienda.getValue();
            int valorJTCaloriasMerienda = Integer.parseInt(JTMerienda.getText());
            alimentoData.obtenerAlimentoPorNombre(selectedItemMer);
            RenglonMenu renglonMerienda = new RenglonMenu(3,alimentoData.obtenerAlimentoPorNombre(selectedItemMer),valorSpinnerMerienda, valorJTCaloriasMerienda);
-           renglonmenuData.agregarRenglon(renglonMerienda);
+           renglonmenuData.agregarRenglon(renglonMerienda,pacienteData.obtenerPacientePorNombre(CBPaciente.toString()));
            
            String selectedItemCena = (String) CBCena.getSelectedItem();
            int valorSpinnerCena = (Integer) jSpinnerCena.getValue();
            int valorJTCaloriasCena = Integer.parseInt(JTCena.getText());
            alimentoData.obtenerAlimentoPorNombre(selectedItemCena);
            RenglonMenu renglonCena = new RenglonMenu(4,alimentoData.obtenerAlimentoPorNombre(selectedItemCena),valorSpinnerCena, valorJTCaloriasCena);
-           renglonmenuData.agregarRenglon(renglonCena);
+           renglonmenuData.agregarRenglon(renglonCena,pacienteData.obtenerPacientePorNombre(CBPaciente.toString()));
            
            String selectedItemCol = (String) CBColaciones.getSelectedItem();
            int valorSpinnerColacion = (Integer) jSpinnerColaciones.getValue();
            int valorJTCaloriasColacion = Integer.parseInt(JTColaciones.getText());
            alimentoData.obtenerAlimentoPorNombre(selectedItemCol);
            RenglonMenu renglonColacion = new RenglonMenu(5,alimentoData.obtenerAlimentoPorNombre(selectedItemCol),valorSpinnerColacion, valorJTCaloriasColacion);
-           renglonmenuData.agregarRenglon(renglonColacion);
+           renglonmenuData.agregarRenglon(renglonColacion,pacienteData.obtenerPacientePorNombre(CBPaciente.toString()));
            
            listaDeRenglones.add(renglonDesayuno);
            listaDeRenglones.add(renglonAlmuerzo);
            listaDeRenglones.add(renglonMerienda);
            listaDeRenglones.add(renglonCena);
            listaDeRenglones.add(renglonColacion);
-            
-           
+              
     }
 
-   
-          
+      
             
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -297,12 +321,14 @@ public class DietaVista extends javax.swing.JFrame {
         outputAltura = new javax.swing.JTextField();
         outputPesoActual = new javax.swing.JTextField();
         outputPesoBuscado = new javax.swing.JTextField();
-        outputGenero = new javax.swing.JTextField();
+        outputTipoDeDieta = new javax.swing.JTextField();
         outputCondicion = new javax.swing.JTextField();
         nutriNombre = new javax.swing.JTextField();
         nutriApellido = new javax.swing.JTextField();
         nutriTelefono = new javax.swing.JTextField();
         nutriEmail = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        outputGenero1 = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
@@ -338,6 +364,7 @@ public class DietaVista extends javax.swing.JFrame {
         jPanel12 = new javax.swing.JPanel();
         JTCaloriasTotales = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
+        jbsugerirDieta = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         DietaPersonalizada = new java.awt.Label();
 
@@ -453,6 +480,8 @@ public class DietaVista extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("Tipo de Dieta:");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -491,8 +520,7 @@ public class DietaVista extends javax.swing.JFrame {
                                                     .addComponent(outputPesoBuscado)
                                                     .addComponent(outputEdad)
                                                     .addComponent(outputApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
-                                                    .addComponent(outputNombre)
-                                                    .addComponent(outputGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                    .addComponent(outputNombre)))
                                             .addGroup(jPanel2Layout.createSequentialGroup()
                                                 .addGap(35, 35, 35)
                                                 .addComponent(outputCondicion, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -511,8 +539,17 @@ public class DietaVista extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addComponent(jCondiAlimenticia)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(outputTipoDeDieta, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(outputGenero1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jCondiAlimenticia))))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -551,12 +588,16 @@ public class DietaVista extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLGenero)
-                    .addComponent(outputGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(outputGenero1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jCondiAlimenticia)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(outputCondicion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(63, 63, 63)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(outputTipoDeDieta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(29, 29, 29)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -848,6 +889,13 @@ public class DietaVista extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jbsugerirDieta.setText("Sugerir dieta");
+        jbsugerirDieta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbsugerirDietaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -896,7 +944,9 @@ public class DietaVista extends javax.swing.JFrame {
                         .addGap(27, 27, 27)
                         .addComponent(jButtonSalirDIA2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 98, Short.MAX_VALUE)))
-                .addGap(167, 167, 167))
+                .addGap(24, 24, 24)
+                .addComponent(jbsugerirDieta)
+                .addGap(68, 68, 68))
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                     .addContainerGap(548, Short.MAX_VALUE)
@@ -924,7 +974,9 @@ public class DietaVista extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel19)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jbsugerirDieta))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20)
@@ -1000,28 +1052,6 @@ public class DietaVista extends javax.swing.JFrame {
 
     private void jButtonSalirDIA2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirDIA2ActionPerformed
         crearRenglonMenu();
-        /*   contadorClics++;
-
-           if (contadorClics == 5) {
-             Dieta dieta = new Dieta("Dieta de ejemplo",new Date(), new Date(),new Paciente(123), 
-                   70.0, // Peso inicial
-                   68.0, // Peso final
-                   true, // Estado
-                   "Baja en carbohidratos" // Tipo de dieta
-               );
-
-   
-               MenuDiario menuDiario = new MenuDiario(1,Integer.parseInt(JTCaloriasTotales.getText()), (ArrayList<RenglonMenu>) listaDeRenglones,"Activa",dieta);
-
-              dietadata.agregarDieta(dieta);
-
-               MenuDiarioData menuDiarioData = new MenuDiarioData();
-              menuDiarioData.agregarMenuDiario(menuDiario);
-               contadorClics = 0;
-               JOptionPane.showMessageDialog(null, "Dieta y Menú Diario creados con éxito.");
-               
-           }*/
-        
     }//GEN-LAST:event_jButtonSalirDIA2ActionPerformed
 
     private void CBDesayunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBDesayunoActionPerformed
@@ -1042,9 +1072,6 @@ public class DietaVista extends javax.swing.JFrame {
 
     private void CBPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBPacienteActionPerformed
        //Rellenar combobox con pacientes desde la base de datos
-       
-       
-       
     }//GEN-LAST:event_CBPacienteActionPerformed
 
     private void nutriNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nutriNombreActionPerformed
@@ -1092,6 +1119,12 @@ public class DietaVista extends javax.swing.JFrame {
     private void JTDesayunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTDesayunoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_JTDesayunoActionPerformed
+
+    private void jbsugerirDietaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbsugerirDietaActionPerformed
+
+
+
+    }//GEN-LAST:event_jbsugerirDietaActionPerformed
 
     
     /**
@@ -1161,6 +1194,7 @@ public class DietaVista extends javax.swing.JFrame {
     private javax.swing.JLabel jLPBuscado;
     private javax.swing.JLabel jLPaciente;
     private javax.swing.JLabel jLTelefono;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
@@ -1185,6 +1219,7 @@ public class DietaVista extends javax.swing.JFrame {
     private javax.swing.JSpinner jSpinnerColaciones;
     private javax.swing.JSpinner jSpinnerDesayuno;
     private javax.swing.JSpinner jSpinnerMerienda;
+    private javax.swing.JButton jbsugerirDieta;
     private javax.swing.JTextField nutriApellido;
     private javax.swing.JTextField nutriEmail;
     private javax.swing.JTextField nutriNombre;
@@ -1193,10 +1228,11 @@ public class DietaVista extends javax.swing.JFrame {
     private javax.swing.JTextField outputApellido;
     private javax.swing.JTextField outputCondicion;
     private javax.swing.JTextField outputEdad;
-    private javax.swing.JTextField outputGenero;
+    private javax.swing.JTextField outputGenero1;
     private javax.swing.JTextField outputNombre;
     private javax.swing.JTextField outputPesoActual;
     private javax.swing.JTextField outputPesoBuscado;
+    private javax.swing.JTextField outputTipoDeDieta;
     private java.awt.Label tituloDatosPaciente;
     // End of variables declaration//GEN-END:variables
 

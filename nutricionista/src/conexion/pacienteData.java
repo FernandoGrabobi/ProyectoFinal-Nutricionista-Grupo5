@@ -69,5 +69,39 @@ public class PacienteData {
         }
     }
     
+    public Paciente obtenerPacientePorNombre(String nombre) {
+        Paciente paciente = null; 
+        String query = "SELECT * FROM paciente WHERE nombre = ?"; 
+
+        try (PreparedStatement stmt = con.prepareStatement(query)) {
+            stmt.setString(1, nombre); 
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                int nroPaciente = rs.getInt("nroPaciente");
+                String apellido = rs.getString("apellido");
+                int edad = rs.getInt("edad");
+                int altura = rs.getInt("altura");
+                String sexo = rs.getString("sexo");
+                float pesoActual = rs.getFloat("pesoActual");
+                float pesoBuscado = rs.getFloat("pesoBuscado");
+                String condicionEspecial = rs.getString("condicionEspecial");
+
+          
+                paciente = new Paciente(nroPaciente, nombre, apellido, edad, altura, sexo, pesoActual, pesoBuscado, condicionEspecial);
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al obtener el paciente: " + e.getMessage());
+        }
+
+        return paciente; 
+    }
+
+    
+    
+    
+    
+    
+    
 
 }

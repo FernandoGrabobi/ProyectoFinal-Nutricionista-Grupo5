@@ -34,7 +34,9 @@ public class Paciente {
         this.pesoBuscado = pesoBuscado;
         this.condicionEspecial = condicionEspecial;
     }
-    
+
+    public Paciente() {
+    }
     
     
     
@@ -115,15 +117,6 @@ public class Paciente {
     }
     
 
-    /*FUNCIONES*/
-
-    public void cambiarPesoDeseado(float nuevoPesoBuscado){
-        this.pesoBuscado = nuevoPesoBuscado;
-    }
-
-    public void actualizarPesoAct(float nuevoPesoAct){
-        this.pesoActual = nuevoPesoAct;
-    }
 
     public boolean seAcercaAlPeso(){
         double diferencia = Math.abs(this.pesoBuscado - this.pesoActual);
