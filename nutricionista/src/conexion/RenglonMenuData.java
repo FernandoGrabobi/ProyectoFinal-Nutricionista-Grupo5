@@ -60,7 +60,7 @@ public class RenglonMenuData {
     public void agregarAlArray(RenglonMenu renglonmenu, Paciente paciente) {
        renglonesParaMenu.add(renglonmenu);
        
-       if (renglonesParaMenu.size() == 4) {
+       if (renglonesParaMenu.size() == 5) {
            MenuDiario nuevoMenu = new MenuDiario(contadorDia, new ArrayList<>(renglonesParaMenu), paciente);
            menusParaDieta.add(nuevoMenu);
            contadorDia++;
