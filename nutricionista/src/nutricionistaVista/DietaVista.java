@@ -12,18 +12,20 @@ import entidades.MenuDiario;
 import entidades.Paciente;
 import entidades.Profesional;
 import entidades.RenglonMenu;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
+import javax.swing.SpinnerNumberModel;
 
 public class DietaVista extends javax.swing.JFrame {
     
@@ -36,6 +38,8 @@ public class DietaVista extends javax.swing.JFrame {
     private List<RenglonMenu> listaDeRenglones= new ArrayList<>();
     Profesional nutri = new Profesional();
     private int contadorClics = 0;
+ 
+
 
     
      public DietaVista(){
@@ -50,8 +54,14 @@ public class DietaVista extends javax.swing.JFrame {
      
      
      
-     
-     
+        // Configurar modelos para los JSpinner
+        // Valor inicial, mínimo, máximo, paso
+        jSpinnerDesayuno.setModel(new SpinnerNumberModel(0, 0, Integer.MAX_VALUE, 1));
+        jSpinnerAlmuerzo.setModel(new SpinnerNumberModel(0, 0, Integer.MAX_VALUE, 1));
+        jSpinnerMerienda.setModel(new SpinnerNumberModel(0, 0, Integer.MAX_VALUE, 1));
+        jSpinnerCena.setModel(new SpinnerNumberModel(0, 0, Integer.MAX_VALUE, 1));
+        jSpinnerColaciones.setModel(new SpinnerNumberModel(0, 0, Integer.MAX_VALUE, 1));
+
      
         /// Metodo para cargar alimentos en los ComboBox
         List<String> alimentos = alimentoData.obtenerAlimentos();
@@ -106,7 +116,6 @@ public class DietaVista extends javax.swing.JFrame {
          }
 
     }
-    
     
     private void setupCaloriasListeners() {
         CBDesayuno.addActionListener(e -> mostrarCalorias(CBDesayuno, JTDesayuno));
@@ -246,51 +255,54 @@ public class DietaVista extends javax.swing.JFrame {
         calcularTipoDeDieta();
     }
           
-     private void crearRenglonMenu(){
-           String selectedItemDes = (String) CBDesayuno.getSelectedItem();
-           int valorSpinnerDesayuno = (Integer) jSpinnerDesayuno.getValue();
-           int valorJTCaloriasDesayuno = Integer.parseInt(JTDesayuno.getText());
-           alimentoData.obtenerAlimentoPorNombre(selectedItemDes);
-           RenglonMenu renglonDesayuno = new RenglonMenu(1,alimentoData.obtenerAlimentoPorNombre(selectedItemDes),valorSpinnerDesayuno, valorJTCaloriasDesayuno);
-           renglonmenuData.agregarRenglon(renglonDesayuno, pacienteData.obtenerPacientePorNombre(CBPaciente.toString()));
-      
-           String selectedItemAlm = (String) CBAlmuerzo.getSelectedItem();
-           int valorSpinnerAlmuerzo = (Integer) jSpinnerAlmuerzo.getValue();
-           int valorJTCaloriasAlmuerzo = Integer.parseInt(JTAlmuerzo.getText());
-           alimentoData.obtenerAlimentoPorNombre(selectedItemAlm);
-           RenglonMenu renglonAlmuerzo = new RenglonMenu(2,alimentoData.obtenerAlimentoPorNombre(selectedItemAlm),valorSpinnerAlmuerzo, valorJTCaloriasAlmuerzo);
-           renglonmenuData.agregarRenglon(renglonAlmuerzo,pacienteData.obtenerPacientePorNombre(CBPaciente.toString()));
-     
-           String selectedItemMer = (String) CBMerienda.getSelectedItem();
-           int valorSpinnerMerienda = (Integer) jSpinnerMerienda.getValue();
-           int valorJTCaloriasMerienda = Integer.parseInt(JTMerienda.getText());
-           alimentoData.obtenerAlimentoPorNombre(selectedItemMer);
-           RenglonMenu renglonMerienda = new RenglonMenu(3,alimentoData.obtenerAlimentoPorNombre(selectedItemMer),valorSpinnerMerienda, valorJTCaloriasMerienda);
-           renglonmenuData.agregarRenglon(renglonMerienda,pacienteData.obtenerPacientePorNombre(CBPaciente.toString()));
-           
-           String selectedItemCena = (String) CBCena.getSelectedItem();
-           int valorSpinnerCena = (Integer) jSpinnerCena.getValue();
-           int valorJTCaloriasCena = Integer.parseInt(JTCena.getText());
-           alimentoData.obtenerAlimentoPorNombre(selectedItemCena);
-           RenglonMenu renglonCena = new RenglonMenu(4,alimentoData.obtenerAlimentoPorNombre(selectedItemCena),valorSpinnerCena, valorJTCaloriasCena);
-           renglonmenuData.agregarRenglon(renglonCena,pacienteData.obtenerPacientePorNombre(CBPaciente.toString()));
-           
-           String selectedItemCol = (String) CBColaciones.getSelectedItem();
-           int valorSpinnerColacion = (Integer) jSpinnerColaciones.getValue();
-           int valorJTCaloriasColacion = Integer.parseInt(JTColaciones.getText());
-           alimentoData.obtenerAlimentoPorNombre(selectedItemCol);
-           RenglonMenu renglonColacion = new RenglonMenu(5,alimentoData.obtenerAlimentoPorNombre(selectedItemCol),valorSpinnerColacion, valorJTCaloriasColacion);
-           renglonmenuData.agregarRenglon(renglonColacion,pacienteData.obtenerPacientePorNombre(CBPaciente.toString()));
-           
-           listaDeRenglones.add(renglonDesayuno);
-           listaDeRenglones.add(renglonAlmuerzo);
-           listaDeRenglones.add(renglonMerienda);
-           listaDeRenglones.add(renglonCena);
-           listaDeRenglones.add(renglonColacion);
-              
+     private void crearRenglonMenu() {
+        // Obtiene el paciente seleccionado
+        String nombrePacienteSeleccionado = (String) CBPaciente.getSelectedItem();
+        Paciente pacienteSeleccionado = pacienteData.obtenerPacientePorNombre(nombrePacienteSeleccionado);
+
+        if (pacienteSeleccionado == null) {
+            JOptionPane.showMessageDialog(this, "Por favor, selecciona un paciente válido.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Desayuno
+        String selectedItemDes = (String) CBDesayuno.getSelectedItem();
+        int valorSpinnerDesayuno = (Integer) jSpinnerDesayuno.getValue();
+        int valorJTCaloriasDesayuno = Integer.parseInt(JTDesayuno.getText());
+        RenglonMenu renglonDesayuno = new RenglonMenu(1, alimentoData.obtenerAlimentoPorNombre(selectedItemDes), valorSpinnerDesayuno, valorJTCaloriasDesayuno);
+        renglonmenuData.agregarRenglon(renglonDesayuno, pacienteSeleccionado);
+
+        // Almuerzo
+        String selectedItemAlm = (String) CBAlmuerzo.getSelectedItem();
+        int valorSpinnerAlmuerzo = (Integer) jSpinnerAlmuerzo.getValue();
+        int valorJTCaloriasAlmuerzo = Integer.parseInt(JTAlmuerzo.getText());
+        RenglonMenu renglonAlmuerzo = new RenglonMenu(2, alimentoData.obtenerAlimentoPorNombre(selectedItemAlm), valorSpinnerAlmuerzo, valorJTCaloriasAlmuerzo);
+        renglonmenuData.agregarRenglon(renglonAlmuerzo, pacienteSeleccionado);
+
+        // Merienda
+        String selectedItemMer = (String) CBMerienda.getSelectedItem();
+        int valorSpinnerMerienda = (Integer) jSpinnerMerienda.getValue();
+        int valorJTCaloriasMerienda = Integer.parseInt(JTMerienda.getText());
+        RenglonMenu renglonMerienda = new RenglonMenu(3, alimentoData.obtenerAlimentoPorNombre(selectedItemMer), valorSpinnerMerienda, valorJTCaloriasMerienda);
+        renglonmenuData.agregarRenglon(renglonMerienda, pacienteSeleccionado);
+
+        // Cena
+        String selectedItemCena = (String) CBCena.getSelectedItem();
+        int valorSpinnerCena = (Integer) jSpinnerCena.getValue();
+        int valorJTCaloriasCena = Integer.parseInt(JTCena.getText());
+        RenglonMenu renglonCena = new RenglonMenu(4, alimentoData.obtenerAlimentoPorNombre(selectedItemCena), valorSpinnerCena, valorJTCaloriasCena);
+        renglonmenuData.agregarRenglon(renglonCena, pacienteSeleccionado);
+        
+        // Colaciones
+        String selectedItemCol = (String) CBColaciones.getSelectedItem();
+        int valorSpinnerColaciones = (Integer) jSpinnerColaciones.getValue();
+        int valorJTCaloriasColaciones = Integer.parseInt(JTColaciones.getText());
+        RenglonMenu renglonColaciones = new RenglonMenu(5, alimentoData.obtenerAlimentoPorNombre(selectedItemCol), valorSpinnerColaciones, valorJTCaloriasColaciones);
+        renglonmenuData.agregarRenglon(renglonColaciones, pacienteSeleccionado);
+
     }
 
-      
+
             
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -1071,7 +1083,14 @@ public class DietaVista extends javax.swing.JFrame {
     }//GEN-LAST:event_outputCondicionActionPerformed
 
     private void CBPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBPacienteActionPerformed
-       //Rellenar combobox con pacientes desde la base de datos
+             CBPaciente.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String nombrePacienteSeleccionado = (String) CBPaciente.getSelectedItem();
+                    // Aquí puedes realizar la lógica con el nombre seleccionado
+                    System.out.println("Paciente seleccionado: " + nombrePacienteSeleccionado);
+                }
+            });
     }//GEN-LAST:event_CBPacienteActionPerformed
 
     private void nutriNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nutriNombreActionPerformed
@@ -1112,8 +1131,7 @@ public class DietaVista extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        calcularTasaMetabolica();
-        
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void JTDesayunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTDesayunoActionPerformed

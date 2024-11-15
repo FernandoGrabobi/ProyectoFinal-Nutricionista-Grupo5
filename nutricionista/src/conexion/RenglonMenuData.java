@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
+import nutricionistaVista.menuDiariosYDieta;
 
 public class RenglonMenuData {
     
@@ -22,6 +23,8 @@ public class RenglonMenuData {
     private int contadorDia = 1;
     Date fechaInicio = new Date();
     Date fechaFin = new Date();
+    menuDiariosYDieta vistaMenuDiarios = new menuDiariosYDieta();
+    
     
     public RenglonMenuData() {
         con = Conexion.getConexion();
@@ -53,28 +56,27 @@ public class RenglonMenuData {
         }                   
     }    
     
+
     public void agregarAlArray(RenglonMenu renglonmenu, Paciente paciente) {
-    renglonesParaMenu.add(renglonmenu);
-
-    if(menusParaDieta.size() <= 5){
-        if (renglonesParaMenu.size() == 5) {
-
+       renglonesParaMenu.add(renglonmenu);
+       
+       if (renglonesParaMenu.size() == 4) {
            MenuDiario nuevoMenu = new MenuDiario(contadorDia, new ArrayList<>(renglonesParaMenu), paciente);
-
-           contadorDia++;  
-           renglonesParaMenu.clear();
-           JOptionPane.showMessageDialog(null, "MenuDiario añadido con exito");
            menusParaDieta.add(nuevoMenu);
+           contadorDia++;
+           renglonesParaMenu.clear();
 
+           JOptionPane.showMessageDialog(null, "Menú cargado correctamente para el día " + (contadorDia - 1));
+           vistaMenuDiarios.cargarMenusEnTextFields(menusParaDieta); 
+       } else {
+           JOptionPane.showMessageDialog(null, "Faltan " + (5 - renglonesParaMenu.size()) + " renglones para completar el menú.");
        }
-    }else{
-        JOptionPane.showMessageDialog(null, " Ya se cargaron los 5 MenusDiarios");
-        Dieta nuevaDieta = new Dieta(paciente.getNombre(),fechaInicio, fechaFin,paciente, paciente.getPesoActual(),paciente.getPesoBuscado() , (ArrayList<MenuDiario>) menusParaDieta,true);
-    }
-   
-    
-}
-    
 
+       if (menusParaDieta.size() >= 5) {
+           JOptionPane.showMessageDialog(null, "Ya se cargaron los 5 MenusDiarios.");
+       }
+   }
+
+    
     
 }

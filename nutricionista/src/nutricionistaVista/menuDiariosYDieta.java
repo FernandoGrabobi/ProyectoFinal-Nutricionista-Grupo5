@@ -6,6 +6,8 @@ package nutricionistaVista;
 
 import conexion.Conexion;
 import conexion.PacienteData;
+import entidades.MenuDiario;
+import entidades.RenglonMenu;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.sql.PreparedStatement;
@@ -13,6 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import javax.swing.JOptionPane;
+
 
 
 public class menuDiariosYDieta extends javax.swing.JPanel {
@@ -122,37 +125,74 @@ public class menuDiariosYDieta extends javax.swing.JPanel {
                
      }
     
-    public void rellenarMenuDiario(){
-            outputDesayuno1.setText("");
-            outputDesayuno2.setText("");
-            outputDesayuno3.setText("");
-            outputDesayuno4.setText("");
-            outputDesayuno5.setText("");
-            outputAlmuerzo1.setText("");
-            outputAlmuerzo2.setText("");
-            outputAlmuerzo3.setText("");
-            outputAlmuerzo4.setText("");
-            outputAlmuerzo5.setText("");
-            outputMerienda1.setText("");
-            outputMerienda2.setText("");
-            outputMerienda3.setText("");
-            outputMerienda4.setText("");
-            outputMerienda5.setText("");
-            outputCena1.setText("");
-            outputCena2.setText("");
-            outputCena3.setText("");
-            outputCena4.setText("");
-            outputCena5.setText("");
-            outputColacion1.setText("");
-            outputColacion2.setText("");
-            outputColacion3.setText("");
-            outputColacion4.setText("");
-            outputColacion5.setText("");
-    
-    
-    
-    }
    
+    public void cargarMenusEnTextFields(List<MenuDiario> menusParaDieta) {
+        if (menusParaDieta == null || menusParaDieta.size() < 5) {
+            JOptionPane.showMessageDialog(null, "No se han cargado suficientes menús diarios.");
+            return;
+        }
+        for (MenuDiario menu : menusParaDieta) {
+            System.out.println("Cargando menu: " + menu.getDia());
+            for (RenglonMenu renglon : menu.getRenglones()) {
+                System.out.println("Alimento: " + renglon.getAlimento().getNombre());
+            }
+        }
+        for (int i = 0; i < menusParaDieta.size(); i++) {
+            MenuDiario menu = menusParaDieta.get(i);
+            List<RenglonMenu> renglones = menu.getRenglones();
+
+            if (renglones.size() < 5) {
+                JOptionPane.showMessageDialog(null, "El menu diario " + (i + 1) + " no tiene suficientes renglones.");
+                continue; 
+            }
+            try {
+                switch (i) {
+                    case 0:
+                        outputDesayuno1.setText(renglones.get(0).getAlimento().getNombre());
+                        outputAlmuerzo1.setText(renglones.get(1).getAlimento().getNombre());
+                        outputMerienda1.setText(renglones.get(2).getAlimento().getNombre());
+                        outputCena1.setText(renglones.get(3).getAlimento().getNombre());
+                        outputColacion1.setText(renglones.get(4).getAlimento().getNombre());
+                        break;
+                    case 1:
+                        outputDesayuno2.setText(renglones.get(0).getAlimento().getNombre());
+                        outputAlmuerzo2.setText(renglones.get(1).getAlimento().getNombre());
+                        outputMerienda2.setText(renglones.get(2).getAlimento().getNombre());
+                        outputCena2.setText(renglones.get(3).getAlimento().getNombre());
+                        outputColacion2.setText(renglones.get(4).getAlimento().getNombre());
+                        break;
+                    case 2:
+                        outputDesayuno3.setText(renglones.get(0).getAlimento().getNombre());
+                        outputAlmuerzo3.setText(renglones.get(1).getAlimento().getNombre());
+                        outputMerienda3.setText(renglones.get(2).getAlimento().getNombre());
+                        outputCena3.setText(renglones.get(3).getAlimento().getNombre());
+                        outputColacion3.setText(renglones.get(4).getAlimento().getNombre());
+                        break;
+                    case 3:
+                        outputDesayuno4.setText(renglones.get(0).getAlimento().getNombre());
+                        outputAlmuerzo4.setText(renglones.get(1).getAlimento().getNombre());
+                        outputMerienda4.setText(renglones.get(2).getAlimento().getNombre());
+                        outputCena4.setText(renglones.get(3).getAlimento().getNombre());
+                        outputColacion4.setText(renglones.get(4).getAlimento().getNombre());
+                        break;
+                    case 4:
+                        outputDesayuno5.setText(renglones.get(0).getAlimento().getNombre());
+                        outputAlmuerzo5.setText(renglones.get(1).getAlimento().getNombre());
+                        outputMerienda5.setText(renglones.get(2).getAlimento().getNombre());
+                        outputCena5.setText(renglones.get(3).getAlimento().getNombre());
+                        outputColacion5.setText(renglones.get(4).getAlimento().getNombre());
+                        break;
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Error al cargar los nombres: " + ex.getMessage());
+
+            }
+        }
+    }
+
+
+ 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
