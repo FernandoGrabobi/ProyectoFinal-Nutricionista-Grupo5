@@ -10,13 +10,11 @@ public class MenuDiario {
     private ArrayList<RenglonMenu> renglones;
     private Paciente paciente;
    
-
     public MenuDiario( int dia, ArrayList<RenglonMenu> renglones, Paciente paciente) {
         this.dia = dia;
         this.renglones = renglones;
         this.paciente = paciente;
     }
-
 
     public Paciente getPaciente() {
         return paciente;
@@ -25,9 +23,7 @@ public class MenuDiario {
     public void setPaciente(Paciente paciente) {
         this.paciente = paciente;
     }
-
-    
-    
+  
     public int getCodMenu() {
         return codMenu;
     }
@@ -51,6 +47,5 @@ public class MenuDiario {
     public void setRenglones(ArrayList<RenglonMenu> renglones) {
         this.renglones = renglones;
     }
-
 
 }

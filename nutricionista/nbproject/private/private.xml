@@ -5,6 +5,7 @@
         <group>
             <file>file:/C:/Users/ferna/Documents/GitHub/ProyectoFinal-Nutricionista-Grupo5/nutricionista/src/entidades/RenglonMenu.java</file>
             <file>file:/C:/Users/ferna/Documents/GitHub/ProyectoFinal-Nutricionista-Grupo5/nutricionista/src/entidades/Dieta.java</file>
+            <file>file:/C:/Users/ferna/Documents/GitHub/ProyectoFinal-Nutricionista-Grupo5/nutricionista/src/entidades/Profesional.java</file>
             <file>file:/C:/Users/ferna/Documents/GitHub/ProyectoFinal-Nutricionista-Grupo5/nutricionista/src/conexion/RenglonMenuData.java</file>
             <file>file:/C:/Users/ferna/Documents/GitHub/ProyectoFinal-Nutricionista-Grupo5/nutricionista/src/nutricionistaVista/DietaVista.java</file>
             <file>file:/C:/Users/ferna/Documents/GitHub/ProyectoFinal-Nutricionista-Grupo5/nutricionista/src/conexion/AlimentoData.java</file>
@@ -14,10 +15,10 @@
             <file>file:/C:/Users/ferna/Documents/GitHub/ProyectoFinal-Nutricionista-Grupo5/nutricionista/src/conexion/DietaData.java</file>
             <file>file:/C:/Users/ferna/Documents/GitHub/ProyectoFinal-Nutricionista-Grupo5/nutricionista/src/entidades/MenuDiario.java</file>
             <file>file:/C:/Users/ferna/Documents/GitHub/ProyectoFinal-Nutricionista-Grupo5/nutricionista/src/entidades/Paciente.java</file>
-            <file>file:/C:/Users/ferna/Documents/GitHub/ProyectoFinal-Nutricionista-Grupo5/nutricionista/src/entidades/Main.java</file>
             <file>file:/C:/Users/ferna/Documents/GitHub/ProyectoFinal-Nutricionista-Grupo5/nutricionista/src/nutricionistaVista/PrincipalVista.java</file>
-            <file>file:/C:/Users/ferna/Documents/GitHub/ProyectoFinal-Nutricionista-Grupo5/nutricionista/src/nutricionistaVista/FormularioVista.java</file>
             <file>file:/C:/Users/ferna/Documents/GitHub/ProyectoFinal-Nutricionista-Grupo5/nutricionista/src/entidades/Alimento.java</file>
+            <file>file:/C:/Users/ferna/Documents/GitHub/ProyectoFinal-Nutricionista-Grupo5/nutricionista/src/nutricionistaVista/FormularioVista.java</file>
+            <file>file:/C:/Users/ferna/Documents/GitHub/ProyectoFinal-Nutricionista-Grupo5/nutricionista/src/nutricionistaVista/AlimentoVista.java</file>
             <file>file:/C:/Users/ferna/Documents/GitHub/ProyectoFinal-Nutricionista-Grupo5/nutricionista/src/nutricionistaVista/menuDiariosYDieta.java</file>
             <file>file:/C:/Users/ferna/Documents/GitHub/ProyectoFinal-Nutricionista-Grupo5/nutricionista/src/conexion/ProfesionalData.java</file>
         </group>

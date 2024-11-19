@@ -185,26 +185,26 @@ public class menuDiariosYDieta extends javax.swing.JPanel {
     /*public void mostrarCoso(){
         System.out.println("outputDesayuno1: " + outputDesayuno1);
         System.out.println("outputAlmuerzo1: " + outputAlmuerzo1);
-         System.out.println("-------------: " + outputDesayuno2);
-        System.out.println("------------------" + outputAlmuerzo2);
-         System.out.println("outputDesayuno1: " + outputDesayuno3);
+        System.out.println("-------------: " + outputDesayuno2);
+        System.out.println("---------------" + outputAlmuerzo2);
+        System.out.println("outputDesayuno1: " + outputDesayuno3);
         System.out.println("outputAlmuerzo1: " + outputAlmuerzo3);
-         System.out.println("outputDesayuno1: " + outputDesayuno4);
+        System.out.println("outputDesayuno1: " + outputDesayuno4);
         System.out.println("outputAlmuerzo1: " + outputAlmuerzo4); 
         System.out.println("outputDesayuno1: " + outputDesayuno5);
         System.out.println("outputDesayuno1: " + outputCena1);
         System.out.println("outputAlmuerzo1: " + outputCena2);
-         System.out.println("outputDesayuno1: " + outputCena3);
+        System.out.println("outputDesayuno1: " + outputCena3);
         System.out.println("outputAlmuerzo1: " + outputCena4); 
         System.out.println("outputDesayuno1: " + outputCena5);
         System.out.println("outputAlmuerzo1: " + outputMerienda1);
-         System.out.println("outputDesayuno1: " + outputMerienda2);
+        System.out.println("outputDesayuno1: " + outputMerienda2);
         System.out.println("outputAlmuerzo1: " + outputMerienda3);
-         System.out.println("outputDesayuno1: " + outputMerienda4);
+        System.out.println("outputDesayuno1: " + outputMerienda4);
         System.out.println("outputAlmuerzo1: " + outputColacion1);
-         System.out.println("outputDesayuno1: " + outputColacion2);
+        System.out.println("outputDesayuno1: " + outputColacion2);
         System.out.println("outputAlmuerzo1: " + outputColacion3);
-         System.out.println("outputDesayuno1: " + outputColacion4);
+        System.out.println("outputDesayuno1: " + outputColacion4);
         System.out.println("outputAlmuerzo1: " + outputColacion5);
         
     }*/
