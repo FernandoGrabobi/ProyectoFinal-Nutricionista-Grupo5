@@ -2,10 +2,12 @@
 package conexion;
 
 import entidades.Alimento;
+import entidades.Paciente;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -65,8 +67,34 @@ public class AlimentoData {
         return alimento; // Devuelve el objeto Alimento o null si no se encontró
     }
 
-    
-    
+     //agregar un alimento
+    public void agregarAlimento(Alimento alimento){
+        String sql = "INSERT INTO `alimento`(nombre, tipoComida, caloriasPor110g, detalle, baja, aptoVegetariano, sexo, condicionEspecial) VALUES"
+                + " (?, ?, ?, ?, ?, ?, ?, ?)";
+        
+        try{
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, alimento.getNombre());
+            ps.setString(2, alimento.getTipo());
+            ps.setInt(3, (int) alimento.getCaloriasPorPorcion());
+            ps.setString(4, alimento.getDetalle());
+            ps.setBoolean(5, alimento.isBaja());
+            ps.setBoolean(6, alimento.isAptoVegetariano());
+            ps.setBoolean(7, alimento.isLibreDeTACC());
+            ps.setBoolean(8, alimento.isLacteo());
+            ps.executeUpdate();
+            ResultSet rs = ps.getGeneratedKeys();
+            
+            if(rs.next()){
+                alimento.setCodComida(rs.getInt(1));
+                JOptionPane.showMessageDialog(null," - Alimento añadido con exito.");
+            }
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla alimento "+ex.getMessage());
+        }                   
+    }
    
     
     public int obtenerCaloriasPor100g(String nombreAlimento) {

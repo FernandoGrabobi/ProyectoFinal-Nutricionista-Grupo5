@@ -27,6 +27,18 @@ public class Alimento {
         this.libreDeTACC = libreDeTACC;
         this.lacteo = lacteo;
     }
+
+    public Alimento(String nombre, double caloriasPorPorcion, String tipo, String detalle, boolean baja, boolean aptoVegetariano, boolean libreDeTACC, boolean lacteo) {
+        this.nombre = nombre;
+        this.caloriasPorPorcion = caloriasPorPorcion;
+        this.tipo = tipo;
+        this.detalle = detalle;
+        this.baja = baja;
+        this.aptoVegetariano = aptoVegetariano;
+        this.libreDeTACC = libreDeTACC;
+        this.lacteo = lacteo;
+    }
+    
     
     
     public int getCodComida() {
