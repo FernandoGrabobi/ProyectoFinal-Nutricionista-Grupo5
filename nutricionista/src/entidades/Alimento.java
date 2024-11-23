@@ -11,29 +11,26 @@ public class Alimento {
     private double caloriasPorPorcion; // por 100g
     private String tipo; // desayuno, merienda, etc.
     private String detalle; // descripción breve
-    private boolean baja;
     private boolean aptoVegetariano;
     private boolean libreDeTACC;
     private boolean lacteo;
 
-    public Alimento(int codComida, String nombre, double caloriasPorPorcion, String tipo, String detalle, boolean baja, boolean aptoVegetariano, boolean libreDeTACC, boolean lacteo) {
+    public Alimento(int codComida, String nombre, double caloriasPorPorcion, String tipo, String detalle, boolean aptoVegetariano, boolean libreDeTACC, boolean lacteo) {
         this.codComida = codComida;
         this.nombre = nombre;
         this.caloriasPorPorcion = caloriasPorPorcion;
         this.tipo = tipo;
         this.detalle = detalle;
-        this.baja = baja;
         this.aptoVegetariano = aptoVegetariano;
         this.libreDeTACC = libreDeTACC;
         this.lacteo = lacteo;
     }
 
-    public Alimento(String nombre, double caloriasPorPorcion, String tipo, String detalle, boolean baja, boolean aptoVegetariano, boolean libreDeTACC, boolean lacteo) {
+    public Alimento(String nombre, double caloriasPorPorcion, String tipo, String detalle, boolean aptoVegetariano, boolean libreDeTACC, boolean lacteo) {
         this.nombre = nombre;
         this.caloriasPorPorcion = caloriasPorPorcion;
         this.tipo = tipo;
         this.detalle = detalle;
-        this.baja = baja;
         this.aptoVegetariano = aptoVegetariano;
         this.libreDeTACC = libreDeTACC;
         this.lacteo = lacteo;
@@ -81,14 +78,6 @@ public class Alimento {
         this.detalle = detalle;
     }
 
-    public boolean isBaja() {
-        return baja;
-    }
-
-    public void setBaja(boolean baja) {
-        this.baja = baja;
-    }
-
     public boolean isAptoVegetariano() {
         return aptoVegetariano;
     }
@@ -115,7 +104,7 @@ public class Alimento {
 
     @Override
     public String toString() {
-        return "Alimento{" + "codComida=" + codComida + ", nombre=" + nombre + ", caloriasPorPorcion=" + caloriasPorPorcion + ", tipo=" + tipo + ", detalle=" + detalle + ", baja=" + baja + ", aptoVegetariano=" + aptoVegetariano + ", libreDeTACC=" + libreDeTACC + ", lacteo=" + lacteo + '}';
+        return "Alimento{" + "codComida=" + codComida + ", nombre=" + nombre + ", caloriasPorPorcion=" + caloriasPorPorcion + ", tipo=" + tipo + ", detalle=" + detalle + ", aptoVegetariano=" + aptoVegetariano + ", libreDeTACC=" + libreDeTACC + ", lacteo=" + lacteo + '}';
     }
     
     

@@ -51,14 +51,13 @@ public class AlimentoData {
                 String tipo = rs.getString("tipoComida");
                 int caloriasPorPorcion = rs.getInt("caloriasPor100g");
                 String detalle = rs.getString("detalle");
-                boolean baja = rs.getBoolean("baja");
                 boolean aptoVegetariano = rs.getBoolean("aptoVegetariano");
                 boolean libreDeTACC = rs.getBoolean("libreDeTACC");
                 boolean lacteo = rs.getBoolean("lacteo");
                
 
                 // Crea un objeto Alimento con los datos obtenidos
-                alimento = new Alimento( codComida, nombre,caloriasPorPorcion,tipo,detalle,baja,aptoVegetariano,libreDeTACC,lacteo);
+                alimento = new Alimento(nombre,caloriasPorPorcion,tipo,detalle,aptoVegetariano,libreDeTACC,lacteo);
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al obtener el alimento: " + e.getMessage());
@@ -69,8 +68,10 @@ public class AlimentoData {
 
      //agregar un alimento
     public void agregarAlimento(Alimento alimento){
-        String sql = "INSERT INTO `alimento`(nombre, tipoComida, caloriasPor110g, detalle, baja, aptoVegetariano, sexo, condicionEspecial) VALUES"
-                + " (?, ?, ?, ?, ?, ?, ?, ?)";
+       String sql = "INSERT INTO `alimento` (`nombre`, `tipoComida`, `caloriasPor100g`, `detalle`, `aptoVegetariano`, `libredeTACC`, `lacteo`) "
+           + "VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+
         
         try{
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -78,10 +79,9 @@ public class AlimentoData {
             ps.setString(2, alimento.getTipo());
             ps.setInt(3, (int) alimento.getCaloriasPorPorcion());
             ps.setString(4, alimento.getDetalle());
-            ps.setBoolean(5, alimento.isBaja());
-            ps.setBoolean(6, alimento.isAptoVegetariano());
-            ps.setBoolean(7, alimento.isLibreDeTACC());
-            ps.setBoolean(8, alimento.isLacteo());
+            ps.setBoolean(5, alimento.isAptoVegetariano());
+            ps.setBoolean(6, alimento.isLibreDeTACC());
+            ps.setBoolean(7, alimento.isLacteo());
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             
@@ -114,3 +114,8 @@ public class AlimentoData {
 
 
 }
+
+
+
+
+/*FUNCIONES PARA INGRESAR NUEVOS ALIMENTOS*/

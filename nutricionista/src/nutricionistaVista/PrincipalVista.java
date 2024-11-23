@@ -21,15 +21,19 @@ public class PrincipalVista extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem1 = new javax.swing.JMenuItem();
         escritorio = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jRBMFormulario = new javax.swing.JRadioButtonMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jRBMFormulario1 = new javax.swing.JRadioButtonMenuItem();
-        jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
         jConsultarDieta = new javax.swing.JMenuItem();
+        jMenu5 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+
+        jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -80,9 +84,6 @@ public class PrincipalVista extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
-        jMenu3.setText("Dieta Automatica");
-        jMenuBar1.add(jMenu3);
-
         jMenu4.setText("Consultar");
 
         jConsultarDieta.setText("Consultar dieta");
@@ -94,6 +95,18 @@ public class PrincipalVista extends javax.swing.JFrame {
         jMenu4.add(jConsultarDieta);
 
         jMenuBar1.add(jMenu4);
+
+        jMenu5.setText("Alimento");
+
+        jMenuItem2.setText("Alimento");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem2);
+
+        jMenuBar1.add(jMenu5);
 
         setJMenuBar(jMenuBar1);
 
@@ -146,6 +159,16 @@ public class PrincipalVista extends javax.swing.JFrame {
         escritorio.moveToFront(consu);
     }//GEN-LAST:event_jConsultarDietaActionPerformed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        AlimentoVista alimentos = new AlimentoVista();
+        escritorio.add(alimentos);
+        alimentos.setVisible(true);
+        alimentos.setSize(1200, 800);
+        escritorio.moveToFront(alimentos);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -160,9 +183,11 @@ public class PrincipalVista extends javax.swing.JFrame {
     private javax.swing.JMenuItem jConsultarDieta;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JRadioButtonMenuItem jRBMFormulario;
     private javax.swing.JRadioButtonMenuItem jRBMFormulario1;
     // End of variables declaration//GEN-END:variables

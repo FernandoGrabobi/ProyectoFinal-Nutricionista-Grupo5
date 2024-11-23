@@ -15,6 +15,8 @@ import javax.swing.JOptionPane;
  */
 public class AlimentoVista extends javax.swing.JPanel {
     
+    private Alimento alimento;
+    Alimento alimentoActual = null;
 
     public AlimentoVista() {
         initComponents();
@@ -34,13 +36,13 @@ public class AlimentoVista extends javax.swing.JPanel {
         InputCBLacteo.setSelected(false);
     }
     private void anularDatosAlimentos(){
-        InputJTNombre.setEditable(false);
-        InputJTTipoDeComida.setEditable(false);
-        InputJTDetalle.setEditable(false);
-        InputJTCalorias.setEditable(false);
-        InputCBAptoVegetarianos.setSelected(false);
-        InputCBLibreDeTacc.setSelected(false);
-        InputCBLacteo.setSelected(false);
+        OutputJTNombre.setEditable(false);
+        OutputJTTipoDeComida.setEditable(false);
+        OutputJTDetalle.setEditable(false);
+        OutputJTCalorias.setEditable(false);
+        OutputCBAptoVegetariano.setSelected(false);
+        OutputCBLibreDeTacc.setSelected(false);
+        OutputCBLacteo.setSelected(false);
     }
 
   
@@ -566,7 +568,7 @@ public class AlimentoVista extends javax.swing.JPanel {
                 }
 
                 // Crear el objeto Alimento
-                Alimento nuevoAlimento = new Alimento(nombre, caloriasPor100g, tipoDeComida, detalle, false, aptoParaVegetariano, libreDeTACC, lacteo);
+                Alimento nuevoAlimento = new Alimento(nombre,caloriasPor100g,tipoDeComida,detalle,aptoParaVegetariano,libreDeTACC,lacteo);
                 AlimentoData alimentoData = new AlimentoData();
                 alimentoData.agregarAlimento(nuevoAlimento);
 
